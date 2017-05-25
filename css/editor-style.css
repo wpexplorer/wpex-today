@@ -1,0 +1,52 @@
+/*------------------------------------------------------------------
+[Table of contents]
+
+# Buttons
+# Notices
+# Highlights
+# Pre tag
+
+/*------------------------------------------------------------------
+[# Theme Button]
+-------------------------------------------------------------------*/
+.wpex-theme-button { font-size: 11px; text-transform: uppercase; font-weight: bold; color: #000; border: 1px solid #000; text-shadow: none; display: inline-block; padding: 0.7em 1.2em; margin: 0 2px 5px 0; }
+.wpex-theme-button:hover { color: #fff; background: #000; text-decoration: none !important; }
+
+/*wpex-theme-button colors*/
+.wpex-theme-button.blue,
+.theme-button.blue { border-color: transparent; background: #3498db; color: #fff; }
+.wpex-theme-button.red,
+.theme-button.red { border-color: transparent; background: #d9534f; color: #fff; }
+.wpex-theme-button.orange,
+.theme-button.orange { border-color: transparent; background: #f0ad4e; color: #fff; }
+.wpex-theme-button.green,
+.theme-button.green { border-color: transparent; background: #5cb85c; color: #fff; }
+.wpex-theme-button.black,
+.theme-button.black { border-color: transparent; background: #000; color: #fff; }
+.wpex-theme-button.white,
+.theme-button.white { border-color: transparent; background: #fff; color: #000; }
+.wpex-theme-button.clean,
+.theme-button.clean { color: #585858; background: none; border: 1px solid #ccc; }
+.wpex-theme-button.clean:hover,
+.theme-button.clean:hover { opacity: 1; background: #f4f4f4; }
+
+/*------------------------------------------------------------------
+[# Notices]
+-------------------------------------------------------------------*/
+.wpex-notice { padding: 20px; margin: 0 0 20px; background: #f0f0f0; border-left: 5px solid #f0ad4e; }
+.wpex-info { border-left-color: #5bc0de }
+.wpex-info strong { color: #5bc0de }
+.wpex-warning { border-left-color: #d9534f }
+.wpex-warning strong { color: #d9534f }
+.wpex-success { border-left-color: #5cb85c }
+.wpex-success strong { color: #5cb85c }
+
+/*------------------------------------------------------------------
+[# Highlights]
+-------------------------------------------------------------------*/
+.wpex-text-highlight { display: inline-block; background-color: #FFF49B; color: #A5651A; padding: 0 5px; }
+
+/*------------------------------------------------------------------
+[# Pre Tag]
+-------------------------------------------------------------------*/
+body#tinymce.wp-editor pre { background: #f9f9f9; padding: 20px 30px; margin-bottom: 30px; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; font-family: 'Verdana'; border-left: 10px solid #ccc; font-size: 0.929em; }

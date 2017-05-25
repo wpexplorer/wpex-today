@@ -1,0 +1,5 @@
+/* CSS For WPEX Metaboxes*/
+.wpex-metabox-table p { margin: 0; padding: 0; }
+.wpex-metabox-table th { width: auto; }
+.wpex-metabox-table pre { margin: 0; padding: 0; }
+.wpex-metabox-table textarea { width: 100%; }
