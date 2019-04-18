@@ -4,7 +4,7 @@
  *
  * @package   Today WordPress Theme
  * @author    Alexander Clarke
- * @copyright Copyright (c) 2015, WPExplorer.com
+ * @copyright Copyright (c) 2019, WPExplorer.com
  * @link      http://www.wpexplorer.com
  * @since     1.0.0
  */
@@ -37,7 +37,7 @@ if ( is_archive() || is_search() || $home_heading ) : ?>
 
 			<?php elseif ( is_search() ) : ?>
 
-				<?php esc_html_e( 'Search Results ', 'today' ); ?>
+				<?php esc_html_e( 'Search Results ', 'wpex-today' ); ?>
 
 			<?php elseif ( is_tax() || is_category() || is_tag() ) : ?>
 
@@ -57,7 +57,7 @@ if ( is_archive() || is_search() || $home_heading ) : ?>
 
 			<div class="wpex-term-description wpex-clr">
 
-				<?php printf( esc_html__( 'You searched for: %s', 'today' ), '<span>'. get_search_query() .'</span>' ); ?>
+				<?php printf( esc_html__( 'You searched for: %s', 'wpex-today' ), '<span>'. get_search_query() .'</span>' ); ?>
 
 			</div><!-- #wpex-term-description -->
 

@@ -4,7 +4,7 @@
  *
  * @package   Today WordPress Theme
  * @author    Alexander Clarke
- * @copyright Copyright (c) 2015, WPExplorer.com
+ * @copyright Copyright (c) 2019, WPExplorer.com
  * @link      http://www.wpexplorer.com
  * @since     1.0.0
  * @version   1.0.1
@@ -75,7 +75,7 @@ if ( $wpex_query->have_posts() ) {
 		<?php
 		// Display heading
 		$heading = wpex_get_theme_mod( 'post_related_heading' );
-		$heading = $heading ? $heading : esc_html__( 'You May Also Like', 'today' );
+		$heading = $heading ? $heading : esc_html__( 'You May Also Like', 'wpex-today' );
 		if ( $heading ) : ?>
 			<h4 class="wpex-heading"><?php echo wpex_sanitize( $heading, 'html' ); ?></h4>
 		<?php endif; ?>
@@ -113,11 +113,11 @@ if ( $wpex_query->have_posts() ) {
 								<?php
 								// Show play icon
 								if ( wpex_has_post_video() ) {
-									echo '<span class="fa fa-play-circle wpex-video-icon"></span>';
+									echo '<span class="fa fa-play-circle wpex-video-icon" aria-hidden="true"></span>';
 								}
 								// Show music icon
 								if ( wpex_has_post_audio() ) {
-									echo '<span class="fa fa-music wpex-music-icon"></span>';
+									echo '<span class="fa fa-music wpex-music-icon" aria-hidden="true"></span>';
 								}
 								// Show title
 								the_title(); ?>

@@ -4,7 +4,7 @@
  *
  * @package Today WordPress Theme
  * @author Alexander Clarke
- * @copyright Copyright (c) 2015, WPExplorer.com
+ * @copyright Copyright (c) 2019, WPExplorer.com
  * @link http://www.wpexplorer.com
  * @since 1.0.0
  */
@@ -19,7 +19,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 
 		// Columns
 		$columns = array(
-			'' => esc_html__( 'Default', 'today' ),
+			'' => esc_html__( 'Default', 'wpex-today' ),
 			1 => 1,
 			2 => 2,
 			3 => 3,
@@ -28,30 +28,30 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 
 		// Layouts
 		$layouts = array(
-			''              => esc_html__( 'Default', 'today' ),
-			'right-sidebar' => esc_html__( 'Right Sidebar', 'today' ),
-			'left-sidebar'  => esc_html__( 'Left Sidebar', 'today' ),
-			'full-width'    => esc_html__( 'No Sidebar', 'today' ),
+			''              => esc_html__( 'Default', 'wpex-today' ),
+			'right-sidebar' => esc_html__( 'Right Sidebar', 'wpex-today' ),
+			'left-sidebar'  => esc_html__( 'Left Sidebar', 'wpex-today' ),
+			'full-width'    => esc_html__( 'No Sidebar', 'wpex-today' ),
 		);
 
 		/*-----------------------------------------------------------------------------------*/
 		/* - General Panel
 		/*-----------------------------------------------------------------------------------*/
 		$panels['general'] = array(
-			'title' => esc_html__( 'General Theme Settings', 'today' ),
+			'title' => esc_html__( 'General Theme Settings', 'wpex-today' ),
 			'sections' => array()
 		);
 
 		// Layouts
 		$panels['general']['sections']['layouts'] = array(
 			'id' => 'wpex_layouts',
-			'title' => esc_html__( 'Layouts', 'today' ),
+			'title' => esc_html__( 'Layouts', 'wpex-today' ),
 			'settings' => array(
 				array(
 					'id' => 'home_layout',
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Homepage Layout', 'today' ),
+						'label' => esc_html__( 'Homepage Layout', 'wpex-today' ),
 						'type' => 'select',
 						'choices' => $layouts,
 					),
@@ -60,17 +60,17 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'id' => 'archives_layout',
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Archives Layout', 'today' ),
+						'label' => esc_html__( 'Archives Layout', 'wpex-today' ),
 						'type' => 'select',
 						'choices' => $layouts,
-						'desc' => esc_html__( 'Categories, tags, author...etc', 'today' ),
+						'desc' => esc_html__( 'Categories, tags, author...etc', 'wpex-today' ),
 					),
 				),
 				array(
 					'id' => 'search_layout',
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Search Layout', 'today' ),
+						'label' => esc_html__( 'Search Layout', 'wpex-today' ),
 						'type' => 'select',
 						'choices' => $layouts,
 					),
@@ -79,7 +79,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'id' => 'post_layout',
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Post Layout', 'today' ),
+						'label' => esc_html__( 'Post Layout', 'wpex-today' ),
 						'type' => 'select',
 						'choices' => $layouts,
 					),
@@ -88,7 +88,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'id' => 'page_layout',
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Page Layout', 'today' ),
+						'label' => esc_html__( 'Page Layout', 'wpex-today' ),
 						'type' => 'select',
 						'choices' => $layouts,
 					),
@@ -99,14 +99,14 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 		// Responsive
 		$panels['general']['sections']['responsive'] = array(
 			'id' => 'wpex_responsive',
-			'title' => esc_html__( 'Responsiveness', 'today' ),
+			'title' => esc_html__( 'Responsiveness', 'wpex-today' ),
 			'settings' => array(
 				array(
 					'id' => 'responsive',
 					'default' => true,
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Enable', 'today' ),
+						'label' => esc_html__( 'Enable', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -116,14 +116,14 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 		// Header Section
 		$panels['general']['sections']['general'] = array(
 			'id' => 'wpex_general',
-			'title' => esc_html__( 'Header', 'today' ),
+			'title' => esc_html__( 'Header', 'wpex-today' ),
 			'settings' => array(
 				array(
 					'id' => 'site_description',
 					'sanitize_callback' => 'esc_html',
 					'default' => true,
 					'control' => array(
-						'label' => esc_html__( 'Display description?', 'today' ),
+						'label' => esc_html__( 'Display description?', 'wpex-today' ),
 						'type' => 'checkbox'
 					),
 				),
@@ -131,7 +131,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'id' => 'logo',
 					'sanitize_callback' => 'esc_url',
 					'control' => array(
-						'label' => esc_html__( 'Custom Logo', 'today' ),
+						'label' => esc_html__( 'Custom Logo', 'wpex-today' ),
 						'type' => 'upload',
 					),
 				),
@@ -139,7 +139,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'id' => 'logo_retina',
 					'sanitize_callback' => 'esc_url',
 					'control' => array(
-						'label' => esc_html__( 'Custom Retina Logo', 'today' ),
+						'label' => esc_html__( 'Custom Retina Logo', 'wpex-today' ),
 						'type' => 'upload',
 					),
 				),
@@ -147,8 +147,8 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'id' => 'logo_retina_height',
 					'sanitize_callback' => 'intval',
 					'control' => array(
-						'label' => esc_html__( 'Standard Logo Height', 'today' ),
-						'desc' => esc_html__( 'Enter the standard height for your logo. Used to set your retina logo to the correct dimensions', 'today' ),
+						'label' => esc_html__( 'Standard Logo Height', 'wpex-today' ),
+						'desc' => esc_html__( 'Enter the standard height for your logo. Used to set your retina logo to the correct dimensions', 'wpex-today' ),
 					),
 				),
 			),
@@ -156,20 +156,20 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 
 		// Topbar Social
 		$social_options = wpex_header_social_options_array();
-		
+
 		if ( $social_options ) {
 
 			$panels['general']['sections']['socialbar'] = array(
 				'id' => 'wpex_social_header',
-				'title' => esc_html__( 'Social', 'today' ),
-				'desc' => esc_html__( 'Enter the full URL to your social media profile.', 'today' ),
+				'title' => esc_html__( 'Social', 'wpex-today' ),
+				'desc' => esc_html__( 'Enter the full URL to your social media profile.', 'wpex-today' ),
 				'settings' => array(
 					array(
 						'id' => 'header_social',
 						'default' => true,
 						'sanitize_callback' => 'esc_html',
 						'control' => array(
-							'label' => esc_html__( 'Enable Social', 'today' ),
+							'label' => esc_html__( 'Enable Social', 'wpex-today' ),
 							'type' => 'checkbox',
 						),
 					),
@@ -180,7 +180,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 				'id' => 'socialbar_target_blank',
 				'transport' => 'postMessage',
 				'control' => array(
-					'label' => esc_html__( 'Open Social Links In New Tab?', 'today' ),
+					'label' => esc_html__( 'Open Social Links In New Tab?', 'wpex-today' ),
 					'type' => 'checkbox',
 					'active_callback' => 'wpex_active_callback_topbar_social',
 				),
@@ -192,7 +192,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'id' => 'socialbar_'. $key,
 					'sanitize_callback' => 'esc_url',
 					'control' => array(
-						'label' => $val['label'] .' - '. esc_html__( 'URL', 'today' ),
+						'label' => $val['label'] .' - '. esc_html__( 'URL', 'wpex-today' ),
 						'active_callback' => 'wpex_active_callback_topbar_social'
 					),
 				);
@@ -205,14 +205,14 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 		// Entries
 		$panels['general']['sections']['entries'] = array(
 			'id' => 'wpex_entries',
-			'title' => esc_html__( 'Entries', 'today' ),
+			'title' => esc_html__( 'Entries', 'wpex-today' ),
 			'settings' => array(
 				array(
 					'id' => 'archive_featured_post',
 					'default' => true,
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Display First Post Large?', 'today' ),
+						'label' => esc_html__( 'Display First Post Large?', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -221,11 +221,11 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => 'numbered',
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Pagination Style', 'today' ),
+						'label' => esc_html__( 'Pagination Style', 'wpex-today' ),
 						'type' => 'select',
 						'choices' => array(
-							'numbered' => esc_html__( 'Numbered', 'today' ),
-							'next_prev' => esc_html__( 'Next/Prev Links', 'today' ),
+							'numbered' => esc_html__( 'Numbered', 'wpex-today' ),
+							'next_prev' => esc_html__( 'Next/Prev Links', 'wpex-today' ),
 						),
 					),
 				),
@@ -234,7 +234,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => '2',
 					'sanitize_callback' => 'absint',
 					'control' => array(
-						'label' => esc_html__( 'Grid Columns', 'today' ),
+						'label' => esc_html__( 'Grid Columns', 'wpex-today' ),
 						'type' => 'select',
 						'choices' => array(
 							1 => 1,
@@ -249,11 +249,11 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => 'excerpt',
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Entry Displays?', 'today' ),
+						'label' => esc_html__( 'Entry Displays?', 'wpex-today' ),
 						'type' => 'select',
 						'choices' => array(
-							'excerpt' => esc_html__( 'Custom Excerpt', 'today' ),
-							'content' => esc_html__( 'Full Content', 'today' ),
+							'excerpt' => esc_html__( 'Custom Excerpt', 'wpex-today' ),
+							'content' => esc_html__( 'Full Content', 'wpex-today' ),
 						),
 					),
 				),
@@ -262,10 +262,9 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => 30,
 					'sanitize_callback' => 'absint',
 					'control' => array(
-						'label' => esc_html__( 'Entry Excerpt Length', 'today' ),
+						'label' => esc_html__( 'Entry Excerpt Length', 'wpex-today' ),
 						'type' => 'number',
-						'desc' => esc_html__( 'How many words to display per excerpt', 'today' ),
-						'active_callback' => 'wpex_has_custom_excerpt'
+						'desc' => esc_html__( 'How many words to display per excerpt', 'wpex-today' ),
 					),
 				),
 				array(
@@ -273,7 +272,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'sanitize_callback' => 'esc_html',
 					'default' => true,
 					'control' => array(
-						'label' => esc_html__( 'Entry Thumbnail', 'today' ),
+						'label' => esc_html__( 'Entry Thumbnail', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -282,7 +281,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'sanitize_callback' => 'esc_html',
 					'default' => true,
 					'control' => array(
-						'label' => esc_html__( 'Entry Category Tag', 'today' ),
+						'label' => esc_html__( 'Entry Category Tag', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -291,7 +290,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'sanitize_callback' => 'esc_html',
 					'default' => true,
 					'control' => array(
-						'label' => esc_html__( 'Display First Category Only', 'today' ),
+						'label' => esc_html__( 'Display First Category Only', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -300,7 +299,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'sanitize_callback' => 'esc_html',
 					'default' => true,
 					'control' => array(
-						'label' => esc_html__( 'Entry Meta', 'today' ),
+						'label' => esc_html__( 'Entry Meta', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -309,7 +308,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'sanitize_callback' => 'esc_html',
 					'default' => true,
 					'control' => array(
-						'label' => esc_html__( 'Entry Meta Date', 'today' ),
+						'label' => esc_html__( 'Entry Meta Date', 'wpex-today' ),
 						'type' => 'checkbox',
 						'active_callback' => 'wpex_customizer_entry_has_meta'
 					),
@@ -319,7 +318,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'sanitize_callback' => 'esc_html',
 					'default' => true,
 					'control' => array(
-						'label' => esc_html__( 'Entry Meta Author', 'today' ),
+						'label' => esc_html__( 'Entry Meta Author', 'wpex-today' ),
 						'type' => 'checkbox',
 							'active_callback' => 'wpex_customizer_entry_has_meta'
 					),
@@ -329,7 +328,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'sanitize_callback' => 'esc_html',
 					'default' => true,
 					'control' => array(
-						'label' => esc_html__( 'Entry Meta Comments', 'today' ),
+						'label' => esc_html__( 'Entry Meta Comments', 'wpex-today' ),
 						'type' => 'checkbox',
 							'active_callback' => 'wpex_customizer_entry_has_meta'
 					),
@@ -339,7 +338,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'sanitize_callback' => 'esc_html',
 					'default' => true,
 					'control' => array(
-						'label' => esc_html__( 'Entry Readmore', 'today' ),
+						'label' => esc_html__( 'Entry Readmore', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -347,7 +346,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'id' => 'entry_readmore_text',
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Entry Readmore Text', 'today' ),
+						'label' => esc_html__( 'Entry Readmore Text', 'wpex-today' ),
 						'type' => 'text',
 					),
 				),
@@ -357,14 +356,14 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 		// Posts
 		$panels['general']['sections']['posts'] = array(
 			'id' => 'wpex_posts',
-			'title' => esc_html__( 'Posts', 'today' ),
+			'title' => esc_html__( 'Posts', 'wpex-today' ),
 			'settings' => array(
 				array(
 					'id' => 'post_thumbnail',
 					'default' => true,
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Post Thumbnail', 'today' ),
+						'label' => esc_html__( 'Post Thumbnail', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -373,7 +372,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => true,
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Post Category Tag', 'today' ),
+						'label' => esc_html__( 'Post Category Tag', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -382,7 +381,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => true,
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Display First Category Only', 'today' ),
+						'label' => esc_html__( 'Display First Category Only', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -391,7 +390,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => true,
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Post Meta', 'today' ),
+						'label' => esc_html__( 'Post Meta', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -400,7 +399,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => true,
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Post Meta Date', 'today' ),
+						'label' => esc_html__( 'Post Meta Date', 'wpex-today' ),
 						'type' => 'checkbox',
 						'active_callback' => 'wpex_customizer_post_has_meta'
 					),
@@ -410,7 +409,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => true,
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Post Meta Author', 'today' ),
+						'label' => esc_html__( 'Post Meta Author', 'wpex-today' ),
 						'type' => 'checkbox',
 						'active_callback' => 'wpex_customizer_post_has_meta'
 					),
@@ -420,7 +419,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => true,
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Post Meta Comments', 'today' ),
+						'label' => esc_html__( 'Post Meta Comments', 'wpex-today' ),
 						'type' => 'checkbox',
 							'active_callback' => 'wpex_customizer_entry_has_meta'
 					),
@@ -430,7 +429,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => true,
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Post Tags', 'today' ),
+						'label' => esc_html__( 'Post Tags', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -439,7 +438,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => true,
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Post Social Share', 'today' ),
+						'label' => esc_html__( 'Post Social Share', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -448,7 +447,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => true,
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Post Author Box', 'today' ),
+						'label' => esc_html__( 'Post Author Box', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -457,7 +456,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => true,
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Post Next/Previous', 'today' ),
+						'label' => esc_html__( 'Post Next/Previous', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -466,7 +465,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => false,
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Post Next/Previous From Same Category', 'today' ),
+						'label' => esc_html__( 'Post Next/Previous From Same Category', 'wpex-today' ),
 						'type' => 'checkbox',
 						'active_callback' => 'wpex_customizer_post_navigation_in_same_term',
 					),
@@ -476,7 +475,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => true,
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Post Related', 'today' ),
+						'label' => esc_html__( 'Post Related', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -485,11 +484,11 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => 'related_category',
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Post Related: Displays?', 'today' ),
+						'label' => esc_html__( 'Post Related: Displays?', 'wpex-today' ),
 						'type' => 'select',
 						'choices' => array(
-							'related_category' => esc_html__( 'Recent From Same Category', 'today' ),
-							'random' => esc_html__( 'Random Posts', 'today' ),
+							'related_category' => esc_html__( 'Recent From Same Category', 'wpex-today' ),
+							'random' => esc_html__( 'Random Posts', 'wpex-today' ),
 						),
 						'active_callback' => 'wpex_customizer_has_related_posts',
 					),
@@ -498,7 +497,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'id' => 'post_related_heading',
 					'sanitize_callback' => 'esc_html',
 					'control' => array(
-						'label' => esc_html__( 'Post Related: Heading', 'today' ),
+						'label' => esc_html__( 'Post Related: Heading', 'wpex-today' ),
 						'type' => 'text',
 						'active_callback' => 'wpex_customizer_has_related_posts',
 					),
@@ -508,7 +507,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'sanitize_callback' => 'absint',
 					'default' => '3',
 					'control' => array(
-						'label' => esc_html__( 'Post Related: Columns', 'today' ),
+						'label' => esc_html__( 'Post Related: Columns', 'wpex-today' ),
 						'type' => 'select',
 						'choices' => array(
 							'1' => '1',
@@ -524,7 +523,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'default' => 6,
 					'sanitize_callback' => 'absint',
 					'control' => array(
-						'label' => esc_html__( 'Post Related: Count', 'today' ),
+						'label' => esc_html__( 'Post Related: Count', 'wpex-today' ),
 						'type' => 'number',
 						'active_callback' => 'wpex_customizer_has_related_posts',
 					),
@@ -535,17 +534,17 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 		// Footer
 		$panels['general']['sections']['footer'] = array(
 			'id' => 'wpex_footer',
-			'title' => esc_html__( 'Footer', 'today' ),
+			'title' => esc_html__( 'Footer', 'wpex-today' ),
 			'settings' => array(
 				array(
 					'id' => 'footer_widget_columns',
 					'default' => 4,
 					'sanitize_callback' => 'absint',
 					'control' => array(
-						'label' => esc_html__( 'Footer Widgets Columns', 'today' ),
+						'label' => esc_html__( 'Footer Widgets Columns', 'wpex-today' ),
 						'type' => 'select',
 						'choices' => array(
-							'disable' => esc_html__( 'None - Disable', 'today' ),
+							'disable' => esc_html__( 'None - Disable', 'wpex-today' ),
 							1 => 1,
 							2 => 2,
 							3 => 3,
@@ -553,21 +552,30 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 						)
 					),
 				),
+				array(
+					'id' => 'footer_copyright',
+					'sanitize_callback' => 'wp_kses_post',
+					'default' => '<a href="https://www.wpexplorer.com/today-free-wordpress/" target="_blank" title="Today WordPress Theme">Today</a> Theme by <a href="https://www.wpexplorer.com" target="_blank">WPExplorer</a> Powered by <a href="https://wordpress.org/" target="_blank">WordPress</a>',
+					'control' => array(
+						'label' => esc_html__( 'Copyright', 'wpex-today' ),
+						'type' => 'textarea',
+					),
+				),
 			),
 		);
 
 		// Advertisement
-		$default_ad = '<a href="http://themeforest.net/item/noir-responsive-wordpress-blog-shop-theme/13434670?ref=WPExplorer"><img src="'. get_template_directory_uri() .'/images/banner.jpg" /></a>';
+		$default_ad = '<a href="https://total.wpexplorer.com"><img src="' . get_template_directory_uri() . '/images/banner.png" /></a>';
 		$panels['general']['sections']['ads'] = array(
 			'id' => 'wpex_ads',
-			'title' => esc_html__( 'Advertisements', 'today' ),
+			'title' => esc_html__( 'Advertisements', 'wpex-today' ),
 			'settings' => array(
 				array(
 					'id' => 'ad_header',
 					'sanitize_callback' => '',
 					'default' => $default_ad,
 					'control' => array(
-						'label' => esc_html__( 'Header', 'today' ),
+						'label' => esc_html__( 'Header', 'wpex-today' ),
 						'type' => 'textarea',
 					),
 				),
@@ -576,7 +584,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'sanitize_callback' => '',
 					'default' => $default_ad,
 					'control' => array(
-						'label' => esc_html__( 'Footer', 'today' ),
+						'label' => esc_html__( 'Footer', 'wpex-today' ),
 						'type' => 'textarea',
 					),
 				),
@@ -586,14 +594,14 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 		// Discussion
 		$panels['general']['sections']['discussion'] = array(
 			'id' => 'wpex_site_discussion',
-			'title' => esc_html__( 'Discussion', 'today' ),
+			'title' => esc_html__( 'Discussion', 'wpex-today' ),
 			'settings' => array(
 				array(
 					'id' => 'comments_on_pages',
 					'sanitize_callback' => 'esc_html',
 					'default' => true,
 					'control' => array(
-						'label' => esc_html__( 'Comments For Pages', 'today' ),
+						'label' => esc_html__( 'Comments For Pages', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -602,7 +610,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 					'sanitize_callback' => 'esc_html',
 					'default' => true,
 					'control' => array(
-						'label' => esc_html__( 'Comments For Posts', 'today' ),
+						'label' => esc_html__( 'Comments For Posts', 'wpex-today' ),
 						'type' => 'checkbox',
 					),
 				),
@@ -613,14 +621,14 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 		/* - Image Sizes
 		/*-----------------------------------------------------------------------------------*/
 		$panels['image_sizes'] = array(
-			'title' => esc_html__( 'Image Sizes', 'today' ),
+			'title' => esc_html__( 'Image Sizes', 'wpex-today' ),
 			'sections' => array(
 
 				// Grid Entries
 				array(
 					'id' => 'wpex_entry_thumbnail_sizes',
-					'title' => esc_html__( 'Entries', 'today' ),
-					'desc' => esc_html__( 'If you alter any image sizes you will have to regenerate your thumbnails.', 'today' ),
+					'title' => esc_html__( 'Entries', 'wpex-today' ),
+					'desc' => esc_html__( 'If you alter any image sizes you will have to regenerate your thumbnails.', 'wpex-today' ),
 					'settings' => array(
 						array(
 							'id' => 'entry_thumbnail_width',
@@ -628,7 +636,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 							'sanitize_callback' => 'absint',
 							'transport' => 'postMessage',
 							'control' => array(
-								'label' => esc_html__( 'Image Width', 'today' ),
+								'label' => esc_html__( 'Image Width', 'wpex-today' ),
 								'type' => 'text',
 							),
 						),
@@ -638,7 +646,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 							'sanitize_callback' => 'absint',
 							'transport' => 'postMessage',
 							'control' => array(
-								'label' => esc_html__( 'Image Height', 'today' ),
+								'label' => esc_html__( 'Image Height', 'wpex-today' ),
 								'type' => 'text',
 							),
 						),
@@ -648,7 +656,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 							'sanitize_callback' => 'esc_html',
 							'transport' => 'postMessage',
 							'control' => array(
-								'label' => esc_html__( 'Crop', 'today' ),
+								'label' => esc_html__( 'Crop', 'wpex-today' ),
 								'type' => 'select',
 								'choices' => wpex_image_crop_locations(),
 							),
@@ -659,8 +667,8 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 				// Featured Entry
 				array(
 					'id' => 'wpex_featured_entry_thumbnail_sizes',
-					'title' => esc_html__( 'Featured Entry', 'today' ),
-					'desc' => esc_html__( 'If you alter any image sizes you will have to regenerate your thumbnails.', 'today' ),
+					'title' => esc_html__( 'Featured Entry', 'wpex-today' ),
+					'desc' => esc_html__( 'If you alter any image sizes you will have to regenerate your thumbnails.', 'wpex-today' ),
 					'settings' => array(
 						array(
 							'id' => 'entry_featured_thumbnail_width',
@@ -668,7 +676,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 							'transport' => 'postMessage',
 							'sanitize_callback' => 'absint',
 							'control' => array(
-								'label' => esc_html__( 'Image Width', 'today' ),
+								'label' => esc_html__( 'Image Width', 'wpex-today' ),
 								'type' => 'text',
 							),
 						),
@@ -678,7 +686,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 							'transport' => 'postMessage',
 							'sanitize_callback' => 'absint',
 							'control' => array(
-								'label' => esc_html__( 'Image Height', 'today' ),
+								'label' => esc_html__( 'Image Height', 'wpex-today' ),
 								'type' => 'text',
 							),
 						),
@@ -687,7 +695,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 							'default' => 'center-center',
 							'transport' => 'postMessage',
 							'control' => array(
-								'label' => esc_html__( 'Crop', 'today' ),
+								'label' => esc_html__( 'Crop', 'wpex-today' ),
 								'type' => 'select',
 								'choices' => wpex_image_crop_locations(),
 							),
@@ -698,8 +706,8 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 				// Posts
 				array(
 					'id' => 'wpex_post_thumbnail_sizes',
-					'title' => esc_html__( 'Posts', 'today' ),
-					'desc' => esc_html__( 'If you alter any image sizes you will have to regenerate your thumbnails.', 'today' ),
+					'title' => esc_html__( 'Posts', 'wpex-today' ),
+					'desc' => esc_html__( 'If you alter any image sizes you will have to regenerate your thumbnails.', 'wpex-today' ),
 					'settings' => array(
 						array(
 							'id' => 'post_thumbnail_width',
@@ -707,7 +715,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 							'sanitize_callback' => 'absint',
 							'transport' => 'postMessage',
 							'control' => array(
-								'label' => esc_html__( 'Image Width', 'today' ),
+								'label' => esc_html__( 'Image Width', 'wpex-today' ),
 								'type' => 'text',
 							),
 						),
@@ -717,7 +725,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 							'sanitize_callback' => 'absint',
 							'transport' => 'postMessage',
 							'control' => array(
-								'label' => esc_html__( 'Image Height', 'today' ),
+								'label' => esc_html__( 'Image Height', 'wpex-today' ),
 								'type' => 'text',
 							),
 						),
@@ -727,7 +735,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 							'sanitize_callback' => 'esc_html',
 							'transport' => 'postMessage',
 							'control' => array(
-								'label' => esc_html__( 'Crop', 'today' ),
+								'label' => esc_html__( 'Crop', 'wpex-today' ),
 								'type' => 'select',
 								'choices' => wpex_image_crop_locations(),
 							),
@@ -738,8 +746,8 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 				// Related Posts
 				array(
 					'id' => 'wpex_posts_related_thumbnail_sizes',
-					'title' => esc_html__( 'Related Posts', 'today' ),
-					'desc' => esc_html__( 'If you alter any image sizes you will have to regenerate your thumbnails.', 'today' ),
+					'title' => esc_html__( 'Related Posts', 'wpex-today' ),
+					'desc' => esc_html__( 'If you alter any image sizes you will have to regenerate your thumbnails.', 'wpex-today' ),
 					'settings' => array(
 						array(
 							'id' => 'post_related_thumbnail_width',
@@ -747,7 +755,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 							'sanitize_callback' => 'absint',
 							'transport' => 'postMessage',
 							'control' => array(
-								'label' => esc_html__( 'Image Width', 'today' ),
+								'label' => esc_html__( 'Image Width', 'wpex-today' ),
 								'type' => 'text',
 							),
 						),
@@ -757,7 +765,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 							'sanitize_callback' => 'absint',
 							'transport' => 'postMessage',
 							'control' => array(
-								'label' => esc_html__( 'Image Height', 'today' ),
+								'label' => esc_html__( 'Image Height', 'wpex-today' ),
 								'type' => 'text',
 							),
 						),
@@ -767,7 +775,7 @@ if ( ! function_exists( 'wpex_customizer_config' ) ) {
 							'sanitize_callback' => 'esc_html',
 							'transport' => 'postMessage',
 							'control' => array(
-								'label' => esc_html__( 'Crop', 'today' ),
+								'label' => esc_html__( 'Crop', 'wpex-today' ),
 								'type' => 'select',
 								'choices' => wpex_image_crop_locations(),
 							),

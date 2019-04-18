@@ -4,7 +4,7 @@
  *
  * @package   Today WordPress Theme
  * @author    Alexander Clarke
- * @copyright Copyright (c) 2015, WPExplorer.com
+ * @copyright Copyright (c) 2019, WPExplorer.com
  * @link      http://www.wpexplorer.com
  * @since     1.0.0
  */
@@ -56,8 +56,8 @@ if ( $total > 1 ) :
 				'total'     => $total,
 				'mid_size'  => 3,
 				'type'      => 'list',
-				'prev_text' => '<span class="fa fa-angle-left"></span>',
-				'next_text' => '<span class="fa fa-angle-right"></span>',
+				'prev_text' => '<span class="fa fa-angle-left" aria-hidden="true"></span>',
+				'next_text' => '<span class="fa fa-angle-right" aria-hidden="true"></span>',
 			) );
 
 			// Output pagination
@@ -65,10 +65,10 @@ if ( $total > 1 ) :
 
 		 </div><!-- .page-numbers -->
 
-	<?php else : 
+	<?php else :
 
-		$next = get_previous_posts_link( esc_html__( 'Newer Entries', 'today' ) .'<span class="fa fa-chevron-right"></span>' );
-		$prev = get_next_posts_link( '<span class="fa fa-chevron-left"></span>'. esc_html__( 'Older Entries', 'today' ) ); ?>
+		$next = get_previous_posts_link( esc_html__( 'Newer Entries', 'wpex-today' ) .'<span class="fa fa-chevron-right" aria-hidden="true"></span>' );
+		$prev = get_next_posts_link( '<span class="fa fa-chevron-left" aria-hidden="true"></span>'. esc_html__( 'Older Entries', 'wpex-today' ) ); ?>
 
 		<div class="wpex-next-prev-nav wpex-heading-font-family wpex-clr">
 			<?php if ( $prev ) : ?>

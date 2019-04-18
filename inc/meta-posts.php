@@ -4,7 +4,7 @@
  *
  * @package   Today WordPress Theme
  * @author    Alexander Clarke
- * @copyright Copyright (c) 2015, WPExplorer.com
+ * @copyright Copyright (c) 2019, WPExplorer.com
  * @link      http://www.wpexplorer.com
  * @since     1.0.0
  */
@@ -52,7 +52,7 @@ class WPEX_Post_Meta_Settings {
 		if ( 'post' == $post_type ) {
 			add_meta_box(
 				'wpex_post_settings_metabox',
-				esc_html__( 'Post Settings', 'today' ),
+				esc_html__( 'Post Settings', 'wpex-today' ),
 				array( $this, 'render_meta_box_content' ),
 				'post',
 				'advanced',
@@ -77,18 +77,18 @@ class WPEX_Post_Meta_Settings {
 			/**** POST Video ****/
 			$value = htmlspecialchars_decode( stripslashes( get_post_meta( $post->ID, 'wpex_post_video', true ) ) );
 			echo '<tr>';
-				echo '<th><p><label for="wpex_post_layout">'. esc_html__( 'Video', 'today' ) .'</label></p></th>';
+				echo '<th><p><label for="wpex_post_layout">'. esc_html__( 'Video', 'wpex-today' ) .'</label></p></th>';
 				echo '<td><pre><textarea cols="30" rows="3" type="text" id="wpex_post_video" name="wpex_post_video"">'. $value .'</textarea></pre>';
-				echo '<small>'. esc_html__( 'Enter your embed code or enter in a URL that is compatible with WordPress\'s built-in oEmbed function or self-hosted video function.', 'today' ) .'</small>';
+				echo '<small>'. esc_html__( 'Enter your embed code or enter in a URL that is compatible with WordPress\'s built-in oEmbed function or self-hosted video function.', 'wpex-today' ) .'</small>';
 				echo '</td>';
 			echo '</tr>';
 
 			/**** POST Audio ****/
 			$value = htmlspecialchars_decode( stripslashes( get_post_meta( $post->ID, 'wpex_post_audio', true ) ) );
 			echo '<tr>';
-				echo '<th><p><label for="wpex_post_layout">'. esc_html__( 'Audio', 'today' ) .'</label></p></th>';
+				echo '<th><p><label for="wpex_post_layout">'. esc_html__( 'Audio', 'wpex-today' ) .'</label></p></th>';
 				echo '<td><pre><textarea cols="30" rows="3" type="text" id="wpex_post_audio" name="wpex_post_audio"">'. $value .'</textarea></pre>';
-				echo '<small>'. esc_html__( 'Enter your embed code or enter in a URL that is compatible with WordPress\'s built-in oEmbed function or self-hosted video function.', 'today' ) .'</small>';
+				echo '<small>'. esc_html__( 'Enter your embed code or enter in a URL that is compatible with WordPress\'s built-in oEmbed function or self-hosted video function.', 'wpex-today' ) .'</small>';
 				echo '</td>';
 			echo '</tr>';
 

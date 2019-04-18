@@ -7,7 +7,7 @@
  *
  * @package     WordPress Customizer Class
  * @author      Alexander Clarke
- * @copyright   Copyright (c) 2015, WPExplorer.com
+ * @copyright   Copyright (c) 2019, WPExplorer.com
  * @link        http://www.wpexplorer.com
  * @version     1.0.0
  */

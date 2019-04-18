@@ -4,7 +4,7 @@
  *
  * @package   Today WordPress Theme
  * @author    Alexander Clarke
- * @copyright Copyright (c) 2015, WPExplorer.com
+ * @copyright Copyright (c) 2019, WPExplorer.com
  * @link      http://www.wpexplorer.com
  * @since     1.0.0
  */
@@ -36,7 +36,7 @@ if ( ! $author_description ) {
 } ?>
 
 <div class="author-info wpex-clr">
-	<h4 class="heading"><span><?php printf( esc_html__( 'Written by %s', 'today' ), $author ); ?></span></h4>
+	<h4 class="heading"><span><?php printf( esc_html__( 'Written by %s', 'wpex-today' ), $author ); ?></span></h4>
 	<div class="author-info-inner wpex-clr">
 		<?php if ( $author_avatar ) { ?>
 			<div class="author-avatar wpex-clr">
@@ -53,27 +53,23 @@ if ( ! $author_description ) {
 				<?php
 				// Display twitter url
 				if ( $url = get_the_author_meta( 'wpex_twitter', $post->post_author ) ) { ?>
-					<a href="<?php echo esc_url( $url ); ?>" title="Twitter" class="twitter" target="_blank"><span class="fa fa-twitter"></span></a>
+					<a href="<?php echo esc_url( $url ); ?>" title="Twitter" class="twitter" target="_blank"><span class="fa fa-twitter" aria-hidden="true"></span></a>
 				<?php }
 				// Display facebook url
 				if ( $url = get_the_author_meta( 'wpex_facebook', $post->post_author ) ) { ?>
-					<a href="<?php echo esc_url( $url ); ?>" title="Facebook" class="facebook" target="_blank"><span class="fa fa-facebook"></span></a>
-				<?php }
-				// Display google plus url
-				if ( $url = get_the_author_meta( 'wpex_googleplus', $post->post_author ) ) { ?>
-					<a href="<?php echo esc_url( $url ); ?>" title="Google Plus" class="google-plus" target="_blank"><span class="fa fa-google-plus"></span></a>
+					<a href="<?php echo esc_url( $url ); ?>" title="Facebook" class="facebook" target="_blank"><span class="fa fa-facebook" aria-hidden="true"></span></a>
 				<?php }
 				// Display Linkedin url
 				if ( $url = get_the_author_meta( 'wpex_linkedin', $post->post_author ) ) { ?>
-					<a href="<?php echo esc_url( $url ); ?>" title="LinkedIn" class="linkedin" target="_blank"><span class="fa fa-linkedin"></span></a>
+					<a href="<?php echo esc_url( $url ); ?>" title="LinkedIn" class="linkedin" target="_blank"><span class="fa fa-linkedin" aria-hidden="true"></span></a>
 				<?php }
 				// Display pinterest plus url
 				if ( $url = get_the_author_meta( 'wpex_pinterest', $post->post_author ) ) { ?>
-					<a href="<?php echo esc_url( $url ); ?>" title="Pinterest" class="pinterest" target="_blank"><span class="fa fa-pinterest"></span></a>
+					<a href="<?php echo esc_url( $url ); ?>" title="Pinterest" class="pinterest" target="_blank"><span class="fa fa-pinterest" aria-hidden="true"></span></a>
 				<?php }
 				// Display instagram plus url
 				if ( $url = get_the_author_meta( 'wpex_instagram', $post->post_author ) ) { ?>
-					<a href="<?php echo esc_url( $url ); ?>" title="Instagram" class="instagram" target="_blank"><span class="fa fa-instagram"></span></a>
+					<a href="<?php echo esc_url( $url ); ?>" title="Instagram" class="instagram" target="_blank"><span class="fa fa-instagram" aria-hidden="true"></span></a>
 				<?php } ?>
 			</div><!-- .author-bio-social -->
 		<?php endif; ?>

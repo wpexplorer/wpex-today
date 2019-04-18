@@ -8,7 +8,7 @@
  *
  * @package   Today WordPress Theme
  * @author    Alexander Clarke
- * @copyright Copyright (c) 2015, WPExplorer.com
+ * @copyright Copyright (c) 2019, WPExplorer.com
  * @link      http://www.wpexplorer.com
  * @since     1.0.0
  */
@@ -29,7 +29,7 @@ if ( ! wpex_has_comments() ) {
 	// Display comments if we have some
 	if ( have_comments() ) : ?>
 
-		<h2 class="wpex-comments-title wpex-heading"><span><?php esc_html_e( 'Join the discussion', 'today' ); ?></span></h2>
+		<h2 class="wpex-comments-title wpex-heading"><span><?php esc_html_e( 'Join the discussion', 'wpex-today' ); ?></span></h2>
 
 		<ol class="commentlist">
 
@@ -47,14 +47,14 @@ if ( ! wpex_has_comments() ) {
 
 			<nav class="navigation comment-navigation row wpex-clr" role="navigation">
 				<h3 class="assistive-text wpex-heading">
-					<span><?php esc_html_e( 'Comment navigation', 'today' ); ?></span>
+					<span><?php esc_html_e( 'Comment navigation', 'wpex-today' ); ?></span>
 				</h3>
 				<div class="wpex-clr">
 					<div class="wpex-nav-previous">
-						<?php previous_comments_link( esc_html__( '&larr; Older Comments', 'today' ) ); ?>
+						<?php previous_comments_link( esc_html__( '&larr; Older Comments', 'wpex-today' ) ); ?>
 					</div>
 					<div class="wpex-nav-next">
-						<?php next_comments_link( esc_html__( 'Newer Comments &rarr;', 'today' ) ); ?>
+						<?php next_comments_link( esc_html__( 'Newer Comments &rarr;', 'wpex-today' ) ); ?>
 					</div>
 				</div><!-- .wpex-clr -->
 			</nav>
@@ -69,7 +69,7 @@ if ( ! wpex_has_comments() ) {
 
 		<div class="comments-closed-notice wpex-clr">
 
-			<?php esc_html_e( 'Comments are now closed.', 'today' ); ?>
+			<?php esc_html_e( 'Comments are now closed.', 'wpex-today' ); ?>
 
 		</div><!-- .comments-closed-notice -->
 

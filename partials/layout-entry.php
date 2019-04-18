@@ -4,7 +4,7 @@
  *
  * @package   Today WordPress Theme
  * @author    Alexander Clarke
- * @copyright Copyright (c) 2015, WPExplorer.com
+ * @copyright Copyright (c) 2019, WPExplorer.com
  * @link      http://www.wpexplorer.com
  * @since     1.0.0
  */
@@ -82,7 +82,7 @@ if ( ! $is_featured_post ) {
 			if ( wpex_get_theme_mod( 'entry_readmore', true )
 				|| wpex_get_theme_mod( 'entry_social_share', true )
 			) : ?>
-				
+
 			<?php
 			// Display entry readmore
 			if ( wpex_get_theme_mod( 'entry_readmore', true ) ) : ?>

@@ -54,6 +54,7 @@
 			// Run on document ready
 			self.cache.$document.on( 'ready', function() {
 				self.coreFunctions();
+				self.dropdownMenu();
 				self.scrollTop();
 				self.mobileMenu();
 			} );
@@ -67,7 +68,7 @@
 		coreFunctions: function() {
 
 			var self = this;
-		   
+
 			// Add class to last pingback for styling purposes
 			$( ".commentlist li.pingback" ).last().addClass( 'last' );
 
@@ -92,6 +93,41 @@
 			      }
 				return false;
 			} );
+
+		},
+
+		/**
+		 * Dropdown menu accessibility
+		 *
+		 * @since 1.1
+		 */
+		dropdownMenu: function() {
+
+			var menu, menuLis, menuAs, i, len;
+
+			menu = $( '.wpex-dropdown-menu' );
+			if ( ! menu ) {
+				return;
+			}
+
+			menuLis = menu.find( 'li' );
+			menuAs  = menu.find( 'li > a' );
+
+			function toggleFocus() {
+				var link    = $( this );
+				var parents = link.parentsUntil( '.wpex-dropdown-menu' );
+				parents.each( function() {
+					var $this = $( this );
+					if ( $this.is( 'li' ) ) {
+						$this.toggleClass( 'focus' );
+					}
+				} );
+			}
+
+			for ( i = 0, len = menuAs.length; i < len; i++ ) {
+				$( menuAs[i] ).on( 'focus', toggleFocus );
+				$( menuAs[i] ).on( 'blur', toggleFocus );
+			}
 
 		},
 

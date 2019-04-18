@@ -4,7 +4,7 @@
  *
  * @package   Today WordPress Theme
  * @author    Alexander Clarke
- * @copyright Copyright (c) 2015, WPExplorer.com
+ * @copyright Copyright (c) 2019, WPExplorer.com
  * @link      http://www.wpexplorer.com
  * @since     1.0.0
  */
@@ -27,8 +27,8 @@ if ( has_nav_menu( $location ) ) : ?>
 			<div class="wpex-site-nav-inner wpex-clr">
 
 				<a href="#mobile-nav" class="wpex-mobile-nav-toggle wpex-off-canvas-menu-btn">
-					<span class="fa fa-bars wpex-mobile-nav-toggle-icon"></span>
-					<?php if ( $mvt_text = apply_filters( 'wpex_mobile_menu_text', esc_html__( 'Menu', 'today' ) ) ) : ?>
+					<span class="fa fa-bars wpex-mobile-nav-toggle-icon" aria-hidden="true"></span>
+					<?php if ( $mvt_text = apply_filters( 'wpex_mobile_menu_text', esc_html__( 'Menu', 'wpex-today' ) ) ) : ?>
 						<span class="wpex-mobile-nav-toggle-text"><?php echo esc_html( $mvt_text ); ?></span>
 					<?php endif; ?>
 				</a><!-- .wpex-site-nav-toggle -->

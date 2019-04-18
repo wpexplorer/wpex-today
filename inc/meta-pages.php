@@ -4,7 +4,7 @@
  *
  * @package   Today WordPress Theme
  * @author    Alexander Clarke
- * @copyright Copyright (c) 2015, WPExplorer.com
+ * @copyright Copyright (c) 2019, WPExplorer.com
  * @link      http://www.wpexplorer.com
  * @since     1.0.0
  */
@@ -52,7 +52,7 @@ class WPEX_Page_Meta_Settings {
 		if ( 'page' == $post_type ) {
 			add_meta_box(
 				'wpex_page_settings_metabox',
-				esc_html__( 'Page Settings', 'today' ),
+				esc_html__( 'Page Settings', 'wpex-today' ),
 				array( $this, 'render_meta_box_content' ),
 				'page',
 				'side',
@@ -79,15 +79,15 @@ class WPEX_Page_Meta_Settings {
 
 			// Layout options
 			$post_layouts = array(
-				''               => esc_html__( 'Default', 'today' ),
-				'right-sidebar'  => esc_html__( 'Right Sidebar', 'today' ),
-				'left-sidebar'   => esc_html__( 'Left Sidebar', 'today' ),
-				'full-width'     => esc_html__( 'No Sidebar', 'today' ),
+				''               => esc_html__( 'Default', 'wpex-today' ),
+				'right-sidebar'  => esc_html__( 'Right Sidebar', 'wpex-today' ),
+				'left-sidebar'   => esc_html__( 'Left Sidebar', 'wpex-today' ),
+				'full-width'     => esc_html__( 'No Sidebar', 'wpex-today' ),
 			);
 
 			// Display the form, using the current value.
 			echo '<tr>';
-				echo '<th><p><label for="wpex_post_layout">'. esc_html__( 'Layout', 'today' ) .'</label></p></th>';
+				echo '<th><p><label for="wpex_post_layout">'. esc_html__( 'Layout', 'wpex-today' ) .'</label></p></th>';
 				echo '<td><select type="text" id="wpex_post_layout" name="wpex_post_layout">';
 					foreach( $post_layouts as $key => $val ) {
 						echo '<option value="'. esc_attr( $key ) .'" '. selected( $value, $key ) .'>'. esc_attr( $val ) .'</option>';

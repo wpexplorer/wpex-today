@@ -4,7 +4,7 @@
  *
  * @package   Today WordPress Theme
  * @author    Alexander Clarke
- * @copyright Copyright (c) 2015, WPExplorer.com
+ * @copyright Copyright (c) 2019, WPExplorer.com
  * @link      http://www.wpexplorer.com
  * @since     1.0.0
  */
@@ -51,16 +51,16 @@ function wpex_parse_obj_id( $id = '', $type = 'page' ) {
  */
 function wpex_image_crop_locations() {
 	return array(
-		' '             => esc_html__( 'Default', 'today' ),
-		'left-top'      => esc_html__( 'Top Left', 'today' ),
-		'right-top'     => esc_html__( 'Top Right', 'today' ),
-		'center-top'    => esc_html__( 'Top Center', 'today' ),
-		'left-center'   => esc_html__( 'Center Left', 'today' ),
-		'right-center'  => esc_html__( 'Center Right', 'today' ),
-		'center-center' => esc_html__( 'Center Center', 'today' ),
-		'left-bottom'   => esc_html__( 'Bottom Left', 'today' ),
-		'right-bottom'  => esc_html__( 'Bottom Right', 'today' ),
-		'center-bottom' => esc_html__( 'Bottom Center', 'today' ),
+		' '             => esc_html__( 'Default', 'wpex-today' ),
+		'left-top'      => esc_html__( 'Top Left', 'wpex-today' ),
+		'right-top'     => esc_html__( 'Top Right', 'wpex-today' ),
+		'center-top'    => esc_html__( 'Top Center', 'wpex-today' ),
+		'left-center'   => esc_html__( 'Center Left', 'wpex-today' ),
+		'right-center'  => esc_html__( 'Center Right', 'wpex-today' ),
+		'center-center' => esc_html__( 'Center Center', 'wpex-today' ),
+		'left-bottom'   => esc_html__( 'Bottom Left', 'wpex-today' ),
+		'right-bottom'  => esc_html__( 'Bottom Right', 'wpex-today' ),
+		'center-bottom' => esc_html__( 'Bottom Center', 'wpex-today' ),
 	);
 }
 
@@ -399,7 +399,7 @@ function wpex_check_meta_type( $value ) {
 
 /**
  * Custom menu walker
- * 
+ *
  * @link  http://codex.wordpress.org/Class_Reference/Walker_Nav_Menu
  * @since 1.0.0
  */
@@ -420,7 +420,7 @@ if ( ! class_exists( 'WPEX_Dropdown_Walker_Nav_Menu' ) ) {
 
 /**
  * Custom comments callback
- * 
+ *
  * @link  http://codex.wordpress.org/Function_Reference/wp_list_comments
  * @since 1.0.0
  */
@@ -432,7 +432,7 @@ if ( ! function_exists( 'wpex_comment' ) ) {
 			case 'trackback' :
 				// Display trackbacks differently than normal comments. ?>
 				<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-				<p><strong><?php esc_html_e( 'Pingback:', 'today' ); ?></strong> <?php comment_author_link(); ?></p>
+				<p><strong><?php esc_html_e( 'Pingback:', 'wpex-today' ); ?></strong> <?php comment_author_link(); ?></p>
 			<?php
 			break;
 			default :
@@ -453,13 +453,13 @@ if ( ! function_exists( 'wpex_comment' ) ) {
 									printf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
 										esc_url( get_comment_link( $comment->comment_ID ) ),
 										get_comment_time( 'c' ),
-										sprintf( _x( '%1$s', '1: date', 'today' ), get_comment_date() )
+										sprintf( _x( '%1$s', '1: date', 'wpex-today' ), get_comment_date() )
 									); ?>
 								</span><!-- .comment-date -->
 							</header><!-- .comment-meta -->
 							<?php if ( '0' == $comment->comment_approved ) : ?>
 								<p class="comment-awaiting-moderation">
-									<?php esc_html_e( 'Your comment is awaiting moderation.', 'today' ); ?>
+									<?php esc_html_e( 'Your comment is awaiting moderation.', 'wpex-today' ); ?>
 								</p><!-- .comment-awaiting-moderation -->
 							<?php endif; ?>
 							<div class="comment-content wpex-entry wpex-clr">
@@ -469,13 +469,13 @@ if ( ! function_exists( 'wpex_comment' ) ) {
 								<?php
 								// Cancel comment link
 								comment_reply_link( array_merge( $args, array(
-									'reply_text'    => esc_html__( 'Reply', 'today' ) . '',
+									'reply_text'    => esc_html__( 'Reply', 'wpex-today' ) . '',
 									'depth'         => $depth,
 									'max_depth'     => $args['max_depth']
 								) ) ); ?>
 								<?php
 								// Edit comment link
-								edit_comment_link( esc_html__( 'Edit', 'today' ), '<div class="edit-comment">', '</div>' ); ?>
+								edit_comment_link( esc_html__( 'Edit', 'wpex-today' ), '<div class="edit-comment">', '</div>' ); ?>
 							</footer>
 						</div><!-- .comment-details -->
 					</div><!-- #comment-## -->
@@ -487,23 +487,17 @@ if ( ! function_exists( 'wpex_comment' ) ) {
 
 /**
  * Returns correct entry excerpt length
- * 
+ *
  * @since 1.0.0
  */
 function wpex_get_entry_excerpt_length() {
-	if ( is_front_page() ) {
-		$length = wpex_get_theme_mod( 'home_entry_excerpt_length', 30 );
-	} else {
-		$length = wpex_get_theme_mod( 'entry_excerpt_length', 30 );
-	}
-	$length = intval( $length ) ? intval( $length ) : 30;
-	return $length;
+	return apply_filters( 'wpex_get_entry_excerpt_length', get_theme_mod( 'entry_excerpt_length', 30 ) );
 }
 
 /**
  * Custom excerpts based on wp_trim_words
  * Created for child-theming purposes
- * 
+ *
  * @link  http://codex.wordpress.org/Function_Reference/wp_trim_words
  * @since 1.0.0
  */
@@ -513,7 +507,7 @@ function wpex_excerpt( $length = 45, $readmore = false ) {
 	global $post;
 
 	// Check for custom excerpt
-	if ( has_excerpt( $post->ID ) ) {
+	if ( ! empty( $post->post_excerpt ) && ! ctype_space( $post->post_excerpt ) ) {
 		$output = $post->post_excerpt;
 	}
 
@@ -521,7 +515,7 @@ function wpex_excerpt( $length = 45, $readmore = false ) {
 	else {
 
 		// Redmore text
-		$readmore_text = get_theme_mod( 'entry_readmore_text', esc_html__( 'read more', 'today' ) );
+		$readmore_text = get_theme_mod( 'entry_readmore_text', esc_html__( 'read more', 'wpex-today' ) );
 
 		// Readmore link
 		$readmore_link = '<a href="'. get_permalink( $post->ID ) .'" title="'. $readmore_text .'">'. $readmore_text .'<span class="wpex-readmore-rarr">&rarr;</span></a>';
@@ -585,7 +579,7 @@ function wpex_include_template( $template ) {
 
 /**
  * List categories for specific taxonomy
- * 
+ *
  * @link    http://codex.wordpress.org/Function_Reference/wp_get_post_terms
  * @since   1.0.0
  */
@@ -626,7 +620,7 @@ if ( ! function_exists( 'wpex_get_post_terms' ) ) {
 
 		// Return first category only
 		if ( $first_only ) {
-			
+
 			$return = $return[0];
 
 		}
@@ -647,7 +641,7 @@ if ( ! function_exists( 'wpex_get_post_terms' ) ) {
 
 /**
  * Echos the wpex_list_post_terms function
- * 
+ *
  * @since 1.0.0
  */
 function wpex_post_terms( $taxonomy = 'category', $first_only = false, $classes = '' ) {
@@ -772,7 +766,7 @@ function wpex_header_social_options_array() {
 			'icon_class' => 'fa fa-rss',
 		),
 		'email' => array(
-			'label'      => esc_html__( 'Email', 'today' ),
+			'label'      => esc_html__( 'Email', 'wpex-today' ),
 			'icon_class' => 'fa fa-envelope',
 		),
 	);

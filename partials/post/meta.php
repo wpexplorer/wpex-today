@@ -4,7 +4,7 @@
  *
  * @package   Today WordPress Theme
  * @author    Alexander Clarke
- * @copyright Copyright (c) 2015, WPExplorer.com
+ * @copyright Copyright (c) 2019, WPExplorer.com
  * @link      http://www.wpexplorer.com
  * @since     1.0.0
  */
@@ -91,7 +91,7 @@ if ( $taxonomy ) {
 			// Display comments
 			if ( 'comments' == $meta_item && comments_open() && wpex_has_comments() && ! post_password_required() ) : ?>
 
-				<li class="wpex-comments"><span class="wpex-spacer">&middot;</span><?php comments_popup_link( esc_html__( '0 Comments', 'today' ), esc_html__( '1 Comment',  'today' ), esc_html__( '% Comments', 'today' ), 'comments-link' ); ?></li>
+				<li class="wpex-comments"><span class="wpex-spacer">&middot;</span><?php comments_popup_link( esc_html__( '0 Comments', 'wpex-today' ), esc_html__( '1 Comment',  'wpex-today' ), esc_html__( '% Comments', 'wpex-today' ), 'comments-link' ); ?></li>
 
 			<?php endif; ?>
 

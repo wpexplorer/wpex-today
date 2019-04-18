@@ -4,7 +4,7 @@
  *
  * @package   Today WordPress Theme
  * @author    Alexander Clarke
- * @copyright Copyright (c) 2015, WPExplorer.com
+ * @copyright Copyright (c) 2019, WPExplorer.com
  * @link      http://www.wpexplorer.com
  * @since     1.0.0
  */ ?>
@@ -13,32 +13,32 @@
 
 	<?php if ( is_home() && current_user_can( 'publish_posts' ) ) { ?>
 
-		<p><?php printf( esc_html__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'today' ), admin_url( 'post-new.php' ) ); ?></p>
+		<p><?php printf( esc_html__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'wpex-today' ), admin_url( 'post-new.php' ) ); ?></p>
 
 	<?php } elseif ( is_search() ) { ?>
 
-		<p><?php esc_html_e( 'Sorry, but nothing matched your search terms.', 'today' ); ?></p>
+		<p><?php esc_html_e( 'Sorry, but nothing matched your search terms.', 'wpex-today' ); ?></p>
 
 	<?php } elseif ( is_category() ) { ?>
 
-		<p><?php esc_html_e( 'There aren\'t any posts currently published in this category.', 'today' ); ?></p>
+		<p><?php esc_html_e( 'There aren\'t any posts currently published in this category.', 'wpex-today' ); ?></p>
 
 	<?php } elseif ( is_tax() ) { ?>
 
-		<p><?php esc_html_e( 'There aren\'t any posts currently published under this taxonomy.', 'today' ); ?></p>
+		<p><?php esc_html_e( 'There aren\'t any posts currently published under this taxonomy.', 'wpex-today' ); ?></p>
 
 	<?php } elseif ( is_tag() ) { ?>
 
-		<p><?php esc_html_e( 'There aren\'t any posts currently published under this tag.', 'today' ); ?></p>
+		<p><?php esc_html_e( 'There aren\'t any posts currently published under this tag.', 'wpex-today' ); ?></p>
 
 	<?php } elseif ( is_404() ) { ?>
 	
 		<h1>404</h1>
-		<p><?php esc_html_e( 'Unfortunately, the page you are looking for does not exist.', 'today' ); ?></p>
+		<p><?php esc_html_e( 'Unfortunately, the page you are looking for does not exist.', 'wpex-today' ); ?></p>
 
 	<?php } else { ?>
 
-		<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'today' ); ?></p>
+		<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'wpex-today' ); ?></p>
 
 	<?php } ?>
 

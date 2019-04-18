@@ -17,10 +17,19 @@
  *
  * @package   Today WordPress Theme
  * @author    Alexander Clarke
- * @copyright Copyright (c) 2015, WPExplorer.com
+ * @copyright Copyright (c) 2019, WPExplorer.com
  * @link      http://www.wpexplorer.com
  * @since     1.0.0
  */
+
+function wpex_theme_info() {
+	return array(
+		'name'    => 'WPEX Today',
+		'slug'    => 'wpex-today',
+		'url'     => 'https://www.wpexplorer.com/today-free-wordpress/',
+		'support' => 'https://github.com/wpexplorer/wpex-today/issues',
+	);
+}
 
 class WPEX_Today_Theme_Setup {
 
@@ -31,15 +40,6 @@ class WPEX_Today_Theme_Setup {
      * @access public
 	 */
 	public function __construct() {
-
-		// Paths
-		$this->template_dir     = get_template_directory();
-		$this->template_dir_uri = get_template_directory_uri();
-
-		// Auto updates
-		if ( is_admin() ) {
-			require_once( $this->template_dir .'/inc/updates.php' );
-		}
 
 		// Tweak excerpt more text
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
@@ -102,26 +102,27 @@ class WPEX_Today_Theme_Setup {
 	public function load_files() {
 
 		// Include Theme Functions
-		require_once( $this->template_dir .'/inc/core-functions.php' );
-		require_once( $this->template_dir .'/inc/conditionals.php' );
-		require_once( $this->template_dir .'/inc/customizer-config.php' );
-		require_once ( $this->template_dir .'/inc/accent-config.php' );
-		require_once( $this->template_dir .'/inc/meta-pages.php' );
-		require_once( $this->template_dir .'/inc/meta-posts.php' );
+		require_once get_parent_theme_file_path( '/inc/core-functions.php' );
+		require_once get_parent_theme_file_path( '/inc/conditionals.php' );
+		require_once get_parent_theme_file_path( '/inc/customizer-config.php' );
+		require_once get_parent_theme_file_path( '/inc/accent-config.php' );
+		require_once get_parent_theme_file_path( '/inc/meta-pages.php' );
+		require_once get_parent_theme_file_path( '/inc/meta-posts.php' );
+
 		if ( is_admin() ) {
-			if ( ! defined( 'WPEX_DISABLE_THEME_ABOUT_PAGE' ) ) {
-				require_once( $this->template_dir .'/inc/dashboard-feed.php' );
-			}
 			if ( ! defined( 'WPEX_DISABLE_THEME_DASHBOARD_FEEDS' ) ) {
-				require_once( $this->template_dir .'/inc/welcome.php' );
+				require_once get_parent_theme_file_path( '/admin/dashboard-feed.php' );
+			}
+			if ( ! defined( 'WPEX_DISABLE_THEME_ABOUT_PAGE' ) ) {
+				require_once get_parent_theme_file_path( '/admin/about.php' );
 			}
 		}
 
 		// Include Classes
-		require_once ( $this->template_dir .'/inc/classes/customizer/customizer.php' );
+		require_once get_parent_theme_file_path( '/inc/classes/customizer/customizer.php' );
 
 		// WPML/Polilang config
-		require_once ( $this->template_dir .'/inc/translators-config.php' );
+		require_once get_parent_theme_file_path( '/inc/translators-config.php' );
 
 	}
 
@@ -143,15 +144,15 @@ class WPEX_Today_Theme_Setup {
 
 		// Register navigation menus
 		register_nav_menus ( array(
-			'main' => esc_html__( 'Main', 'today' ),
+			'main' => esc_html__( 'Main', 'wpex-today' ),
 		) );
 
 		// Add editor styles
 		add_editor_style( 'css/editor-style.css' );
-		
+
 		// Localization support
-		load_theme_textdomain( 'today', get_template_directory() .'/languages' );
-			
+		load_theme_textdomain( 'wpex-today', get_template_directory() .'/languages' );
+
 		// Add theme support
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'automatic-feed-links' );
@@ -197,11 +198,8 @@ class WPEX_Today_Theme_Setup {
 	 */
 	public function theme_css() {
 
-		// Define css directory
-		$css_dir_uri = $this->template_dir_uri .'/css/';
-
 		// Font Awesome
-		wp_enqueue_style( 'font-awesome', $css_dir_uri .'font-awesome.min.css' );
+		wp_enqueue_style( 'font-awesome', get_parent_theme_file_uri( '/css/font-awesome.min.css' ) );
 
 		// Montserrat font
 		wp_enqueue_style( 'google-font-raleway', 'https://fonts.googleapis.com/css?family=Raleway:400,400italic,500,500italic,600,600italic,700,700italic&subset=latin,latin-ext' );
@@ -226,7 +224,7 @@ class WPEX_Today_Theme_Setup {
 	 */
 	public function responsive_css() {
 		if ( get_theme_mod( 'responsive', true ) ) {
-			wp_enqueue_style( 'wpex-responsive', $this->template_dir_uri .'/css/responsive.css' );
+			wp_enqueue_style( 'wpex-responsive', get_parent_theme_file_uri( '/css/responsive.css' ) );
 		}
 	}
 
@@ -240,8 +238,9 @@ class WPEX_Today_Theme_Setup {
 	 */
 	public function theme_js() {
 
-		// Define js directory
-		$js_dir_uri = $this->template_dir_uri .'/js/';
+		// HTML5 shiv
+		wp_enqueue_script( 'html5shiv', get_parent_theme_file_uri( '/js/html5.js' ), array(), false, false );
+		wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
 
 		// Comment reply
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -251,14 +250,14 @@ class WPEX_Today_Theme_Setup {
 		// Localize scripts
 		$localize  = apply_filters( 'wpex_localize', array(
 			'isRTL'           => is_rtl(),
-			'mobileMenuOpen'  => get_theme_mod( 'mobile_menu_open_text', esc_html__( 'Menu', 'today' ) ),
-			'mobileMenuClose' => get_theme_mod( 'mobile_menu_close_text', esc_html__( 'Menu', 'today' ) ),
+			'mobileMenuOpen'  => get_theme_mod( 'mobile_menu_open_text', esc_html__( 'Menu', 'wpex-today' ) ),
+			'mobileMenuClose' => get_theme_mod( 'mobile_menu_close_text', esc_html__( 'Menu', 'wpex-today' ) ),
 		) );
 
-		wp_enqueue_script( 'fitvids', $js_dir_uri .'plugins/jquery.fitvids.js', array( 'jquery' ), '1.1', true );
+		wp_enqueue_script( 'fitvids', get_parent_theme_file_uri( '/js/plugins/jquery.fitvids.js' ), array( 'jquery' ), '1.1', true );
 
 		// Theme functions
-		wp_enqueue_script( 'wpex-functions', $js_dir_uri .'functions.js', array( 'jquery' ), false, true );
+		wp_enqueue_script( 'wpex-functions', get_parent_theme_file_uri( '/js/functions.js' ), array( 'jquery' ), false, true );
 		wp_localize_script( 'wpex-functions', 'wpexLocalize', $localize );
 
 	}
@@ -275,7 +274,7 @@ class WPEX_Today_Theme_Setup {
 
 		// Sidebar
 		register_sidebar( array(
-			'name'          => esc_html__( 'Sidebar - Main', 'today' ),
+			'name'          => esc_html__( 'Sidebar - Main', 'wpex-today' ),
 			'id'            => 'sidebar',
 			'before_widget' => '<div class="wpex-sidebar-widget %2$s wpex-clr">',
 			'after_widget'  => '</div>',
@@ -285,7 +284,7 @@ class WPEX_Today_Theme_Setup {
 
 		// Sidebar
 		register_sidebar( array(
-			'name'          => esc_html__( 'Sidebar - Pages', 'today' ),
+			'name'          => esc_html__( 'Sidebar - Pages', 'wpex-today' ),
 			'id'            => 'sidebar_pages',
 			'before_widget' => '<div class="wpex-sidebar-widget %2$s wpex-clr">',
 			'after_widget'  => '</div>',
@@ -300,7 +299,7 @@ class WPEX_Today_Theme_Setup {
 		if ( $cols >= 1 ) {
 
 			register_sidebar( array(
-				'name'          => esc_html__( 'Footer 1', 'today' ),
+				'name'          => esc_html__( 'Footer 1', 'wpex-today' ),
 				'id'            => 'footer-one',
 				'before_widget' => '<div class="footer-widget %2$s wpex-clr">',
 				'after_widget'  => '</div>',
@@ -314,7 +313,7 @@ class WPEX_Today_Theme_Setup {
 		if ( $cols > 1 ) {
 
 			register_sidebar( array(
-				'name'          => esc_html__( 'Footer 2', 'today' ),
+				'name'          => esc_html__( 'Footer 2', 'wpex-today' ),
 				'id'            => 'footer-two',
 				'before_widget' => '<div class="footer-widget %2$s wpex-clr">',
 				'after_widget'  => '</div>',
@@ -328,7 +327,7 @@ class WPEX_Today_Theme_Setup {
 		if ( $cols > 2 ) {
 
 			register_sidebar( array(
-				'name'          => esc_html__( 'Footer 3', 'today' ),
+				'name'          => esc_html__( 'Footer 3', 'wpex-today' ),
 				'id'            => 'footer-three',
 				'before_widget' => '<div class="footer-widget %2$s wpex-clr">',
 				'after_widget'  => '</div>',
@@ -342,7 +341,7 @@ class WPEX_Today_Theme_Setup {
 		if ( $cols > 3 ) {
 
 			register_sidebar( array(
-				'name'          => esc_html__( 'Footer 4', 'today' ),
+				'name'          => esc_html__( 'Footer 4', 'wpex-today' ),
 				'id'            => 'footer-four',
 				'before_widget' => '<div class="footer-widget %2$s wpex-clr">',
 				'after_widget'  => '</div>',
@@ -353,7 +352,7 @@ class WPEX_Today_Theme_Setup {
 		}
 
 	}
-	
+
 	/**
 	 * Adds classes to the body_class function
 	 *
@@ -455,14 +454,14 @@ class WPEX_Today_Theme_Setup {
 	}
 
 	/**
-	 * Adds meta generator for 
+	 * Adds theme meta generator
 	 *
 	 * @since 1.0.0
 	 * @access public
 	 */
 	public static function theme_meta_generator() {
 		$theme = wp_get_theme();
-		echo '<meta name="generator" content="Built With The Today WordPress Theme '. $theme->get( 'Version' ) .' by WPExplorer.com" />';
+		echo '<meta name="generator" content="Built With The Today WordPress Theme ' . $theme->get( 'Version' ) . ' by WPExplorer.com" />';
 		echo "\r\n";
 	}
 
@@ -477,75 +476,75 @@ class WPEX_Today_Theme_Setup {
 	public static function formats( $settings ) {
 		$new_formats = array(
 			array(
-				'title'     => esc_html__( 'Highlight', 'noir' ),
+				'title'     => esc_html__( 'Highlight', 'wpex-today' ),
 				'inline'    => 'span',
 				'classes'   => 'wpex-text-highlight'
 			),
 			array(
-				'title' => esc_html__( 'Buttons', 'noir' ),
+				'title' => esc_html__( 'Buttons', 'wpex-today' ),
 				'items' => array(
 					array(
-						'title'     => esc_html__( 'Default', 'noir' ),
+						'title'     => esc_html__( 'Default', 'wpex-today' ),
 						'selector'  => 'a',
 						'classes'   => 'wpex-theme-button'
 					),
 					array(
-						'title'     => esc_html__( 'Red', 'noir' ),
+						'title'     => esc_html__( 'Red', 'wpex-today' ),
 						'selector'  => 'a',
 						'classes'   => 'wpex-theme-button red'
 					),
 					array(
-						'title'     => esc_html__( 'Green', 'noir' ),
+						'title'     => esc_html__( 'Green', 'wpex-today' ),
 						'selector'  => 'a',
 						'classes'   => 'wpex-theme-button green'
 					),
 					array(
-						'title'     => esc_html__( 'Blue', 'noir' ),
+						'title'     => esc_html__( 'Blue', 'wpex-today' ),
 						'selector'  => 'a',
 						'classes'   => 'wpex-theme-button blue'
 					),
 					array(
-						'title'     => esc_html__( 'Orange', 'noir' ),
+						'title'     => esc_html__( 'Orange', 'wpex-today' ),
 						'selector'  => 'a',
 						'classes'   => 'wpex-theme-button orange'
 					),
 					array(
-						'title'     => esc_html__( 'Black', 'noir' ),
+						'title'     => esc_html__( 'Black', 'wpex-today' ),
 						'selector'  => 'a',
 						'classes'   => 'wpex-theme-button black'
 					),
 					array(
-						'title'     => esc_html__( 'White', 'noir' ),
+						'title'     => esc_html__( 'White', 'wpex-today' ),
 						'selector'  => 'a',
 						'classes'   => 'wpex-theme-button white'
 					),
 					array(
-						'title'     => esc_html__( 'Clean', 'noir' ),
+						'title'     => esc_html__( 'Clean', 'wpex-today' ),
 						'selector'  => 'a',
 						'classes'   => 'wpex-theme-button clean'
 					),
 				),
 			),
 			array(
-				'title' => esc_html__( 'Notices', 'noir' ),
+				'title' => esc_html__( 'Notices', 'wpex-today' ),
 				'items' => array(
 					array(
-						'title'     => esc_html__( 'Default', 'noir' ),
+						'title'     => esc_html__( 'Default', 'wpex-today' ),
 						'block'     => 'div',
 						'classes'   => 'wpex-notice'
 					),
 					array(
-						'title'     => esc_html__( 'Info', 'noir' ),
+						'title'     => esc_html__( 'Info', 'wpex-today' ),
 						'block'     => 'div',
 						'classes'   => 'wpex-notice wpex-info'
 					),
 					array(
-						'title'     => esc_html__( 'Warning', 'noir' ),
+						'title'     => esc_html__( 'Warning', 'wpex-today' ),
 						'block'     => 'div',
 						'classes'   => 'wpex-notice wpex-warning'
 					),
 					array(
-						'title'     => esc_html__( 'Success', 'noir' ),
+						'title'     => esc_html__( 'Success', 'wpex-today' ),
 						'block'     => 'div',
 						'classes'   => 'wpex-notice wpex-success'
 					),
