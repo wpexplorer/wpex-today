@@ -61,6 +61,7 @@ body.left-sidebar .wpex-sidebar { float: left }
 
 /*hide screen reader text*/
 .screen-reader-response { display: none }
+.skip-link.screen-reader-text:focus { font-size: 13px; }
 
 /* Text meant only for screen readers. */
 .screen-reader-text { clip: rect(1px, 1px, 1px, 1px); position: absolute !important; height: 1px; width: 1px; overflow: hidden; }

@@ -80,7 +80,6 @@ class WPEX_Theme_Admin_About {
 			'manage_options',
 			'wpex-theme',
 			array( $this, 'recommended_screen' ),
-			'dashicons-desktop'
 		);
 
 	}

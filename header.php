@@ -26,4 +26,4 @@
 
 		<?php get_template_part( 'partials/layout-header' ); ?>
 
-		<div class="wpex-site-content wpex-container wpex-clr">
+		<div id="content" class="wpex-site-content wpex-container wpex-clr">
