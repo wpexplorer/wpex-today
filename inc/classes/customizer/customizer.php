@@ -1,9 +1,7 @@
 <?php
 /**
- * Main Customizer functions
+ * Create customizer settings based on array.
  *
- * This is a SUPER trimmed down version of our Customizer class used in
- * popular premium themes such as Total, Noir, Chic...etc.
  *
  * @package     WordPress Customizer Class
  * @author      Alexander Clarke
@@ -115,7 +113,7 @@ if ( ! class_exists( 'WPEX_Customizer' ) ) {
 						$id                 = isset( $setting['id'] ) ? $setting['id'] : '';
 						$transport          = isset( $setting['transport'] ) ? $setting['transport'] : 'refresh';
 						$default            = isset( $setting['default'] ) ? $setting['default'] : '';
-						$sanitize_callback  = isset( $setting['sanitize_callback'] ) ? $setting['sanitize_callback'] : false;
+						$sanitize_callback  = isset( $setting['sanitize_callback'] ) ? $setting['sanitize_callback'] : 'wp_strip_all_tags'; // always sanitize
 						$label              = isset( $setting['control']['label'] ) ? $setting['control']['label'] : '';
 						$control_desc       = isset( $setting['control']['desc'] ) ? $setting['control']['desc'] : '';
 						$type               = isset( $setting['control']['type'] ) ? $setting['control']['type'] : 'text';
@@ -134,12 +132,6 @@ if ( ! class_exists( 'WPEX_Customizer' ) ) {
 							$control_object = 'WP_Customize_Color_Control';
 						} elseif ( 'upload' == $type ) {
 							$control_object = 'WP_Customize_Image_Control';
-						} elseif ( 'sorter' == $type ) {
-							$control_object = 'WPEX_Customize_Control_Sorter';
-						} elseif ( 'google_font' == $type ) {
-							$control_object = 'WPEX_Fonts_Dropdown_Control';
-						} elseif ( 'ui-slider' == $type ) {
-							$control_object = 'WPEX_Customize_Sliderui_Control';
 						} else {
 							$control_object = false;
 						}
