@@ -1,13 +1,9 @@
 <?php
 /**
  * Template Name: Authors
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
  */
+
+defined( 'ABSPATH' ) || exit;
 
 get_header(); ?>
 
@@ -18,7 +14,7 @@ get_header(); ?>
 		<main class="wpex-site-main wpex-clr">
 
 			<?php
-			// Get a list of users
+			// Get a list of users.
 			$administrators = get_users( array(
 				'orderby' => 'post_count',
 				'role'    => 'administrator',

@@ -1,13 +1,10 @@
 <?php
 /**
  * The Header for our theme.
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
  */
+
+defined( 'ABSPATH' ) || exit;
+
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -19,6 +16,8 @@
 </head>
 
 <body <?php body_class(); ?>>
+
+	<?php wp_body_open(); ?>
 
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'wpex-today' ); ?></a>
 

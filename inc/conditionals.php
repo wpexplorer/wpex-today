@@ -1,13 +1,9 @@
 <?php
 /**
- * Useful conditionals for this theme
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
+ * Useful conditionals for this theme.
  */
+
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Check if page titles should be over featured images

@@ -1,18 +1,9 @@
 <?php
 /**
  * The template for displaying Author bios.
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 // Author description required
 if ( $description = get_the_author_meta( 'description' ) ) : ?>

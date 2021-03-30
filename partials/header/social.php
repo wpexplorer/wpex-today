@@ -1,19 +1,9 @@
 <?php
 /**
- * Socialbar
- *
- * @package   Noir WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
- * @version   1.1.2
+ * Socialbar.
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 // Display topbar social
 if ( wpex_get_theme_mod( 'topbar_social_enable', true )
@@ -28,5 +18,5 @@ if ( wpex_get_theme_mod( 'topbar_social_enable', true )
 			<?php endif; ?>
 		<?php endforeach; ?>
 	</div><!-- .wpex-socialbar -->
-	
+
 <?php endif; ?>

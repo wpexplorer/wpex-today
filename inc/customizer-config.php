@@ -1,13 +1,9 @@
 <?php
 /**
- * Defines all settings for the customizer class
- *
- * @package Today WordPress Theme
- * @author Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link http://www.wpexplorer.com
- * @since 1.0.0
+ * Defines all settings for the customizer class.
  */
+
+defined( 'ABSPATH' ) || exit;
 
 if ( ! function_exists( 'wpex_customizer_config' ) ) {
 

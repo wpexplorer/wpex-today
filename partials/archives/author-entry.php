@@ -1,18 +1,9 @@
 <?php
 /**
- * Author bio
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
+ * Author bio.
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 // Vars
 global $wpex_author;
@@ -25,7 +16,7 @@ $author_profile_url	= get_author_posts_url( $user_id ); ?>
 	<div class="wpex-author-info-inner wpex-clr">
 
 		<div class="wpex-author-info-avatar">
-			<a href="<?php echo esc_url( $author_profile_url ); ?>" title="<?php esc_html_e( 'Posts by', 'wpex-today' ); ?> <?php echo esc_attr( $display_name ); ?>">
+			<a href="<?php echo esc_url( $author_profile_url ); ?>" title="<?php esc_attr_e( 'Posts by', 'wpex-today' ); ?> <?php echo esc_attr( $display_name ); ?>">
 				<?php echo get_avatar( $user_id , '80' ); ?>
 			</a>
 		</div><!-- .wpex-author-info-avatar -->
@@ -33,7 +24,7 @@ $author_profile_url	= get_author_posts_url( $user_id ); ?>
 		<div class="wpex-author-info-desc">
 
 			<h2 class="wpex-author-info-title">
-				<a href="<?php echo esc_url( $author_profile_url ); ?>" title="<?php esc_html_e( 'Posts by', 'wpex-today' ); ?> <?php echo esc_attr( $display_name ); ?>">
+				<a href="<?php echo esc_url( $author_profile_url ); ?>" title="<?php esc_attr_e( 'Posts by', 'wpex-today' ); ?> <?php echo esc_attr( $display_name ); ?>">
 					<?php echo esc_html( $display_name ); ?>
 				</a>
 			</h2><!-- .wpex-author-info-title -->

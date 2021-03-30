@@ -1,18 +1,9 @@
 <?php
 /**
- * Outputs the header logo
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
+ * Outputs the header logo.
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 // Get data
 $logo      = wpex_get_header_logo_src();

@@ -2,7 +2,7 @@
 /**
  * Theme functions and definitions.
  *
- * Sets up the theme and provides some helper functions
+ * Sets up the theme and provides some helper functions.
  *
  * When using a child theme (see http://codex.wordpress.org/Theme_Development
  * and http://codex.wordpress.org/Child_Themes), you can override certain
@@ -14,13 +14,9 @@
  *
  * For more information on hooks, actions, and filters,
  * see http://codex.wordpress.org/Plugin_API
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
  */
+
+defined( 'ABSPATH' ) || exit;
 
 function wpex_theme_info() {
 	return array(
@@ -31,7 +27,7 @@ function wpex_theme_info() {
 	);
 }
 
-class WPEX_Today_Theme_Setup {
+final class WPEX_Today_Theme_Setup {
 
 	/**
 	 * Start things up
@@ -41,67 +37,67 @@ class WPEX_Today_Theme_Setup {
 	 */
 	public function __construct() {
 
-		// Tweak excerpt more text
+		// Tweak excerpt more text.
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
 
-		// Add responsive class to embeds
+		// Add responsive class to embeds.
 		add_filter( 'embed_oembed_html', array( $this, 'embed_oembed_html' ), 99, 4 );
 
-		// Add user contact fields
+		// Add user contact fields.
 		add_filter( 'user_contactmethods', array( $this, 'user_fields' ) );
 
-		// Add custom body classes
+		// Add custom body classes.
 		add_filter( 'body_class', array( $this, 'body_classes' ) );
 
-		// Add theme meta generator
+		// Add theme meta generator.
 		add_action( 'wp_head', array( $this, 'theme_meta_generator' ), 9999 );
 
-		// Load theme files
+		// Load theme files.
 		add_action( 'after_setup_theme', array( $this, 'load_files' ) );
 
-		// Theme setup
+		// Theme setup.
 		add_action( 'after_setup_theme', array( $this, 'setup' ) );
 
-		// Load theme CSS
+		// Load theme CSS.
 		add_action( 'wp_enqueue_scripts', array( $this, 'theme_css' ) );
 
-		// Load responsive CSS
+		// Load responsive CSS.
 		add_action( 'wp_enqueue_scripts', array( $this, 'responsive_css' ), 999 );
 
-		// Load theme js scripts
+		// Load theme js scripts.
 		add_action( 'wp_enqueue_scripts', array( $this, 'theme_js' ) );
 
-		// Register sidebars
+		// Register sidebars.
 		add_action( 'widgets_init', array( $this, 'register_sidebars' ) );
 
-		// Output JS for retina logo
+		// Output JS for retina logo.
 		add_action( 'wp_head', array( $this, 'retina_logo' ) );
 
-		// Add new post formats
+		// Add new post formats.
 		add_filter( 'tiny_mce_before_init', array( $this, 'formats' ) );
 
-		// Move Comment textarea form field back to bottom
+		// Move Comment textarea form field back to bottom.
 		if ( apply_filters( 'wpex_move_comment_form_fields', true ) ) {
 			add_filter( 'comment_form_fields', array( $this, 'move_comment_form_fields' ) );
 		}
 
-		// Alter tag font size
+		// Alter tag font size.
 		add_filter( 'widget_tag_cloud_args', array( $this, 'tag_font_size' ) );
 
-		// Remove default gallery styles
+		// Remove default gallery styles.
 		add_filter( 'use_default_gallery_style', '__return_false' );
 
 	}
 
 	/**
-	 * Include functions and classes
+	 * Include functions and classes.
 	 *
      * @since  1.0.0
      * @access public
 	 */
 	public function load_files() {
 
-		// Include Theme Functions
+		// Include Theme Functions.
 		require_once get_parent_theme_file_path( '/inc/core-functions.php' );
 		require_once get_parent_theme_file_path( '/inc/conditionals.php' );
 		require_once get_parent_theme_file_path( '/inc/customizer-config.php' );
@@ -118,49 +114,49 @@ class WPEX_Today_Theme_Setup {
 			}
 		}
 
-		// Include Classes
+		// Include Classes.
 		require_once get_parent_theme_file_path( '/inc/classes/customizer/customizer.php' );
 
-		// WPML/Polilang config
+		// WPML/Polilang config.
 		require_once get_parent_theme_file_path( '/inc/translators-config.php' );
 
 	}
 
 	/**
-	 * Functions called during each page load, after the theme is initialized
-	 * Perform basic setup, registration, and init actions for the theme
+	 * Functions called during each page load, after the theme is initialized.
+	 * Perform basic setup, registration, and init actions for the theme.
 	 *
      * @since  1.0.0
      * @access public
 	 *
 	 * @link   http://codex.wordpress.org/Plugin_API/Action_Reference/after_setup_theme
 	 */
-	public static function setup() {
+	public function setup() {
 
-		// Define content_width variable
+		// Define content_width variable.
 		if ( ! isset( $content_width ) ) {
 			$content_width = 745;
 		}
 
-		// Register navigation menus
+		// Register navigation menus.
 		register_nav_menus ( array(
 			'main' => esc_html__( 'Main', 'wpex-today' ),
 		) );
 
-		// Add editor styles
+		// Add editor styles.
 		add_editor_style( 'css/editor-style.css' );
 
-		// Localization support
-		load_theme_textdomain( 'wpex-today', get_template_directory() .'/languages' );
+		// Localization support.
+		load_theme_textdomain( 'wpex-today', get_template_directory() . '/languages' );
 
-		// Add theme support
+		// Add theme support.
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'custom-background' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'custom-header' );
 
-		// Add image sizes
+		// Add image sizes.
 		add_image_size(
 			'wpex_entry',
 			get_theme_mod( 'entry_thumbnail_width', 9999 ),
@@ -189,7 +185,7 @@ class WPEX_Today_Theme_Setup {
 	}
 
 	/**
-	 * Load custom CSS scripts in the front end
+	 * Load custom CSS scripts in the front end.
 	 *
      * @since  1.0.0
      * @access public
@@ -198,16 +194,16 @@ class WPEX_Today_Theme_Setup {
 	 */
 	public function theme_css() {
 
-		// Font Awesome
+		// Font Awesome.
 		wp_enqueue_style( 'font-awesome', get_parent_theme_file_uri( '/css/font-awesome.min.css' ) );
 
-		// Montserrat font
+		// Montserrat font.
 		wp_enqueue_style( 'google-font-raleway', 'https://fonts.googleapis.com/css?family=Raleway:400,400italic,500,500italic,600,600italic,700,700italic&subset=latin,latin-ext' );
 
-		// Main CSS
+		// Main CSS.
 		wp_enqueue_style( 'style', get_stylesheet_uri() );
 
-		// Remove Contact Form 7 Styles
+		// Remove Contact Form 7 Styles.
 		if ( function_exists( 'wpcf7_enqueue_styles') ) {
 			wp_dequeue_style( 'contact-form-7' );
 		}
@@ -215,7 +211,7 @@ class WPEX_Today_Theme_Setup {
 	}
 
 	/**
-	 * Load responsive css
+	 * Load responsive css.
 	 *
      * @since  1.0.0
      * @access public
@@ -229,7 +225,7 @@ class WPEX_Today_Theme_Setup {
 	}
 
 	/**
-	 * Load custom JS scripts in the front end
+	 * Load custom JS scripts in the front end.
 	 *
      * @since  1.0.0
      * @access public
@@ -238,16 +234,12 @@ class WPEX_Today_Theme_Setup {
 	 */
 	public function theme_js() {
 
-		// HTML5 shiv
-		wp_enqueue_script( 'html5shiv', get_parent_theme_file_uri( '/js/html5.js' ), array(), false, false );
-		wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
-
-		// Comment reply
+		// Comment reply.
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
 
-		// Localize scripts
+		// Localize scripts.
 		$localize  = apply_filters( 'wpex_localize', array(
 			'isRTL'           => is_rtl(),
 			'mobileMenuOpen'  => get_theme_mod( 'mobile_menu_open_text', esc_html__( 'Menu', 'wpex-today' ) ),
@@ -256,23 +248,23 @@ class WPEX_Today_Theme_Setup {
 
 		wp_enqueue_script( 'fitvids', get_parent_theme_file_uri( '/js/plugins/jquery.fitvids.js' ), array( 'jquery' ), '1.1', true );
 
-		// Theme functions
+		// Theme functions.
 		wp_enqueue_script( 'wpex-functions', get_parent_theme_file_uri( '/js/functions.js' ), array( 'jquery' ), false, true );
 		wp_localize_script( 'wpex-functions', 'wpexLocalize', $localize );
 
 	}
 
 	/**
-	 * Registers the theme sidebars
+	 * Registers the theme sidebars.
 	 *
      * @since  1.0.0
      * @access public
 	 *
-	 * @link   http://codex.wordpress.org/Function_Reference/register_sidebar
+	 * @link http://codex.wordpress.org/Function_Reference/register_sidebar
 	 */
-	public static function register_sidebars() {
+	public function register_sidebars() {
 
-		// Sidebar
+		// Sidebar.
 		register_sidebar( array(
 			'name'          => esc_html__( 'Sidebar - Main', 'wpex-today' ),
 			'id'            => 'sidebar',
@@ -282,7 +274,7 @@ class WPEX_Today_Theme_Setup {
 			'after_title'   => '</h4>',
 		) );
 
-		// Sidebar
+		// Sidebar.
 		register_sidebar( array(
 			'name'          => esc_html__( 'Sidebar - Pages', 'wpex-today' ),
 			'id'            => 'sidebar_pages',
@@ -292,10 +284,10 @@ class WPEX_Today_Theme_Setup {
 			'after_title'   => '</h4>',
 		) );
 
-		// Get footer columns
+		// Get footer columns.
 		$cols = get_theme_mod( 'footer_columns', '4' );
 
-		// Footer 1
+		// Footer 1.
 		if ( $cols >= 1 ) {
 
 			register_sidebar( array(
@@ -309,7 +301,7 @@ class WPEX_Today_Theme_Setup {
 
 		}
 
-		// Footer 2
+		// Footer 2.
 		if ( $cols > 1 ) {
 
 			register_sidebar( array(
@@ -323,7 +315,7 @@ class WPEX_Today_Theme_Setup {
 
 		}
 
-		// Footer 3
+		// Footer 3.
 		if ( $cols > 2 ) {
 
 			register_sidebar( array(
@@ -337,7 +329,7 @@ class WPEX_Today_Theme_Setup {
 
 		}
 
-		// Footer 4
+		// Footer 4.
 		if ( $cols > 3 ) {
 
 			register_sidebar( array(
@@ -354,126 +346,116 @@ class WPEX_Today_Theme_Setup {
 	}
 
 	/**
-	 * Adds classes to the body_class function
+	 * Adds classes to the body_class function.
 	 *
      * @since  1.0.0
      * @access public
 	 *
-	 * @link   http://codex.wordpress.org/Function_Reference/body_class
+	 * @link http://codex.wordpress.org/Function_Reference/body_class
 	 */
-	public static function body_classes( $classes ) {
-
-		// Add post layout
+	public function body_classes( $classes ) {
 		$classes[] = wpex_get_post_layout();
-
-		// Return classes
 		return $classes;
-
 	}
 
 	/**
-	 * Return custom excerpt more string
+	 * Return custom excerpt more string.
 	 *
      * @since  1.0.0
      * @access public
 	 *
-	 * @link   http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_more
+	 * @link http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_more
 	 */
-	public static function excerpt_more( $more ) {
+	public function excerpt_more( $more ) {
 		return $more;
 	}
 
 	/**
-	 * Alters the default oembed output
+	 * Alters the default oembed output.
 	 *
 	 * @since  1.0.0
 	 * @access public
 	 *
-	 * @link   https://developer.wordpress.org/reference/hooks/embed_oembed_html/
+	 * @link https://developer.wordpress.org/reference/hooks/embed_oembed_html/
 	 */
-	public static function embed_oembed_html( $html, $url, $attr, $post_id ) {
+	public function embed_oembed_html( $html, $url, $attr, $post_id ) {
 		return '<div class="wpex-responsive-embed">' . $html . '</div>';
 	}
 
 	/**
-	 * Adds js for the retina logo
+	 * Adds js for the retina logo.
 	 *
 	 * @since 1.0.0
 	 */
-	public static function retina_logo() {
-		$logo_url    = esc_url( get_theme_mod( 'logo_retina' ) );
+	public function retina_logo() {
+		$logo_url = get_theme_mod( 'logo_retina' );
 		$logo_height = intval( get_theme_mod( 'logo_height' ) );
 		if ( $logo_url && $logo_height ) {
-			echo '<!-- Retina Logo --><script type="text/javascript">jQuery(function($){if (window.devicePixelRatio >= 2) {$("#wpex-site-logo img").attr("src", "'. esc_url( $logo_url ) .'");$("#wpex-site-logo img").css("height", "'. intval( $logo_height ) .'");}});</script>';
+			echo '<!-- Retina Logo --><script type="text/javascript">jQuery(function($){if (window.devicePixelRatio >= 2) {$("#wpex-site-logo img").attr("src", "' . esc_url( $logo_url ) . '");$("#wpex-site-logo img").css("height", "' . intval( $logo_height ) . '");}});</script>';
 		}
 	}
 
 	/**
-	 * Add new user fields
+	 * Add new user fields.
 	 *
 	 * @since  1.0.0
 	 * @access public
 	 *
 	 * @link   http://codex.wordpress.org/Plugin_API/Filter_Reference/user_contactmethods
 	 */
-	public static function user_fields( $contactmethods ) {
+	public function user_fields( $contactmethods ) {
 
-		// Add Twitter
+		// Add Twitter.
 		if ( ! isset( $contactmethods['wpex_twitter'] ) ) {
 			$contactmethods['wpex_twitter'] = 'Today - Twitter';
 		}
 
-		// Add Facebook
+		// Add Facebook.
 		if ( ! isset( $contactmethods['wpex_facebook'] ) ) {
 			$contactmethods['wpex_facebook'] = 'Today - Facebook';
 		}
 
-		// Add GoglePlus
-		if ( ! isset( $contactmethods['wpex_googleplus'] ) ) {
-			$contactmethods['wpex_googleplus'] = 'Today - Google+';
-		}
-
-		// Add LinkedIn
+		// Add LinkedIn.
 		if ( ! isset( $contactmethods['wpex_linkedin'] ) ) {
 			$contactmethods['wpex_linkedin'] = 'Today - LinkedIn';
 		}
 
-		// Add Pinterest
+		// Add Pinterest.
 		if ( ! isset( $contactmethods['wpex_pinterest'] ) ) {
 			$contactmethods['wpex_pinterest'] = 'Today - Pinterest';
 		}
 
-		// Add Pinterest
+		// Add Pinterest.
 		if ( ! isset( $contactmethods['wpex_instagram'] ) ) {
 			$contactmethods['wpex_instagram'] = 'Today - Instagram';
 		}
 
-		// Return contactmethods
+		// Return contactmethods.
 		return $contactmethods;
 
 	}
 
 	/**
-	 * Adds theme meta generator
+	 * Adds theme meta generator.
 	 *
 	 * @since 1.0.0
 	 * @access public
 	 */
-	public static function theme_meta_generator() {
+	public function theme_meta_generator() {
 		$theme = wp_get_theme();
 		echo '<meta name="generator" content="Built With The Today WordPress Theme ' . $theme->get( 'Version' ) . ' by WPExplorer.com" />';
 		echo "\r\n";
 	}
 
 	/**
-	 * Add new formats
+	 * Add new formats.
 	 *
 	 * @since  1.0.0
 	 * @access public
 	 *
-	 * @link   http://codex.wordpress.org/TinyMCE_Custom_Styles
+	 * @link http://codex.wordpress.org/TinyMCE_Custom_Styles
 	 */
-	public static function formats( $settings ) {
+	public function formats( $settings ) {
 		$new_formats = array(
 			array(
 				'title'     => esc_html__( 'Highlight', 'wpex-today' ),
@@ -556,11 +538,11 @@ class WPEX_Today_Theme_Setup {
 	}
 
 	/**
-	 * Move Comment form field back to bottom which was altered in WP 4.4
+	 * Move Comment form field back to bottom which was altered in WP 4.4.
 	 *
 	 * @since 1.1.0
 	 */
-	public static function move_comment_form_fields( $fields ) {
+	public function move_comment_form_fields( $fields ) {
 		$comment_field = $fields['comment'];
 		unset( $fields['comment'] );
 		$fields['comment'] = $comment_field;
@@ -569,11 +551,11 @@ class WPEX_Today_Theme_Setup {
 
 
 	/**
-	 * Alter the default tag font sizes
+	 * Alter the default tag font sizes.
 	 *
 	 * @since 1.0.0
 	 */
-	public static function tag_font_size( $args ) {
+	public function tag_font_size( $args ) {
 		$args['smallest'] = '0.857';
 		$args['largest']  = '0.857';
 		$args['unit']     = 'em';

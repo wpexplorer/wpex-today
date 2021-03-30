@@ -1,23 +1,14 @@
 <?php
 /**
- * Topbar Layout
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
+ * Topbar Layout.
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
-// Check display
+// Check display.
 $display = apply_filters( 'wpex_topbar_enable', wpex_get_theme_mod( 'topbar_enable', true ) );
 
-// Show topbar if enabled
+// Show topbar if enabled.
 if ( $display ) : ?>
 
 	<div class="wpex-topbar-wrap wpex-clr">

@@ -5,13 +5,9 @@
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages and that other
  * 'pages' on your WordPress site will use a different template.
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
  */
+
+defined( 'ABSPATH' ) || exit;
 
 get_header(); ?>
 

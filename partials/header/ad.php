@@ -1,18 +1,9 @@
 <?php
 /**
- * Outputs the header advertisement
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
+ * Outputs the header advertisement.
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 $default = '<a href="https://total.wpexplorer.com" target="_blank"><img src="' . get_template_directory_uri() . '/images/banner.png" /></a>';
 if ( $ad = wpex_get_theme_mod( 'ad_header', $default ) ) : ?>

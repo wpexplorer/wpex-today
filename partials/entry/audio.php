@@ -1,18 +1,9 @@
 <?php
 /**
- * Displays the entry audio
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
+ * Displays the entry audio.
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-    exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 // Get audio
 $audio = get_post_meta( get_the_ID(), 'wpex_post_audio', true );
@@ -38,5 +29,5 @@ if ( $embed_code ) : ?>
     <div class="wpex-loop-entry-audio wpex-loop-entry-media wpex-clr">
         <?php echo wpex_sanitize( $embed_code, 'audio' ); ?>
     </div><!-- .wpex-loop-entry-audio -->
-    
+
 <?php endif; ?>

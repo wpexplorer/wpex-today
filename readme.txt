@@ -33,3 +33,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Fixed Issue with comment button in social are displaying even when comments are disabled
 * Fixed Accessibility issues with focus states on links and forms
 * Fixed Checkbox display issue in comment forms
+
+= 1.3 =
+
+* Fixed localization issues.
+* Removed Google Plus settings.
+* Removed HTML5 shiv js.
+* Added ABSPATH check to every php file.
+* Added wp_body_open hook.

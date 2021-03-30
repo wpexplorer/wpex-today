@@ -1,18 +1,11 @@
 <?php
 /**
- * The main header layout
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
+ * The main header layout.
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-} ?>
+defined( 'ABSPATH' ) || exit;
+
+?>
 
 <div class="wpex-site-header-wrap wpex-clr">
 

@@ -1,18 +1,9 @@
 <?php
 /**
- * Displays the post audio
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
+ * Displays the post audio.
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 // Get audio
 $audio = get_post_meta( get_the_ID(), 'wpex_post_audio', true );
@@ -32,5 +23,5 @@ if ( 'iframe' == $type || 'embed' == $type ) {
 	<div class="wpex-post-media wpex-post-audio wpex-clr">
 		<?php echo wpex_sanitize( $audio, 'audio' ); ?>
 	</div><!-- .wpex-post-audio -->
-	
+
 <?php endif; ?>

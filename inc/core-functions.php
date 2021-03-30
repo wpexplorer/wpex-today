@@ -1,13 +1,9 @@
 <?php
 /**
- * Core functions used for the theme
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
+ * Core functions used for the theme.
  */
+
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Returns theme mod

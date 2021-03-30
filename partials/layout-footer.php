@@ -1,18 +1,9 @@
 <?php
 /**
- * Footer Layout
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
+ * Footer Layout.
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 $has_footer_widgets = wpex_has_footer_widgets(); ?>
 
@@ -29,7 +20,7 @@ $has_footer_widgets = wpex_has_footer_widgets(); ?>
 		<?php endif; ?>
 
 		<?php if ( get_theme_mod( 'footer_copyright', true  ) ) : ?>
-			
+
 			<div class="wpex-footer-bottom<?php if ( $has_footer_widgets ) echo ' wpex-has-footer-widgets'; ?>">
 				<?php get_template_part( 'partials/footer/copyright' ); ?>
 			</div><!-- .wpex-footer-bottom -->

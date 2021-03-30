@@ -1,16 +1,10 @@
 <?php
 /**
  * Create customizer settings based on array.
- *
- *
- * @package     WordPress Customizer Class
- * @author      Alexander Clarke
- * @copyright   Copyright (c) 2019, WPExplorer.com
- * @link        http://www.wpexplorer.com
- * @version     1.0.0
  */
 
-// Start Class
+defined( 'ABSPATH' ) || exit;
+
 if ( ! class_exists( 'WPEX_Customizer' ) ) {
 	class WPEX_Customizer {
 

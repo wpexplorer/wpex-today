@@ -1,19 +1,9 @@
 <?php
 /**
- * Single related posts
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
- * @version   1.0.1
+ * Single related posts.
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 // Make sure we should display related items
 if ( 'post' != get_post_type()

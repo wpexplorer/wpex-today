@@ -1,25 +1,16 @@
 <?php
 /**
- * Defines all settings for the customizer class
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
+ * Defines all settings for the customizer class.
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 // Set global var
 global $wpex_accent_config;
 
 // Start Class
 if ( ! class_exists( 'WPEX_Accent_Config' ) ) {
-	
+
 	class WPEX_Accent_Config {
 
 		/**
@@ -53,11 +44,7 @@ if ( ! class_exists( 'WPEX_Accent_Config' ) ) {
 		 */
 		public function texts( $array ) {
 			return array_merge( $array, array(
-
-				// Logo
 				'.site-text-logo a',
-			
-
 			) );
 		}
 
@@ -101,7 +88,7 @@ if ( ! class_exists( 'WPEX_Accent_Config' ) ) {
 				'.page-numbers a:hover',
 				'.page-numbers span.current',
 				'.page-links span, .page-links a span:hover',
-				
+
 				// Comments
 				'a#cancel-comment-reply-link:hover',
 				'.comment-footer a:hover',

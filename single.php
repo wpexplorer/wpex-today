@@ -1,13 +1,9 @@
 <?php
 /**
  * The Template for displaying all single posts.
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
  */
+
+defined( 'ABSPATH' ) || exit;
 
 get_header(); ?>
 
@@ -15,9 +11,7 @@ get_header(); ?>
 
 		<div class="wpex-content-area wpex-clr">
 
-			<?php
-			// Ad region
-			wpex_ad_region( 'single-top' ); ?>
+			<?php wpex_ad_region( 'single-top' ); ?>
 
 			<main class="wpex-site-main wpex-clr">
 

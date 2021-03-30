@@ -1,13 +1,9 @@
 <?php
 /**
- * Add metabox to pages
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
+ * Add metabox to pages.
  */
+
+defined( 'ABSPATH' ) || exit;
 
 // Only needed for the admin side
 if ( ! is_admin() ) {

@@ -1,18 +1,9 @@
 <?php
 /**
- * Outputs the post slider
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
+ * Outputs the post slider.
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 // Get gallery image ids
 $imgs             = wpex_get_gallery_ids();
@@ -36,11 +27,11 @@ if ( $imgs ) : ?>
 		<?php
 		// Display category tab
 		if ( wpex_get_theme_mod( 'entry_category', true ) ) : ?>
-		
+
 			<?php get_template_part( 'partials/entry/category' ); ?>
 
 		<?php endif; ?>
-	
+
 		<?php
 		// Get first image to display as a placeholder while the slider simplexml_load_string(
 		$first_img     = $imgs[0];
@@ -103,5 +94,5 @@ if ( $imgs ) : ?>
 		</div><!-- .wpex-post-slider -->
 
 	</div><!-- .wpex-post-slider-wrap -->
-	
+
 <?php endif; ?>

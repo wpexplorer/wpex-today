@@ -1,18 +1,9 @@
 <?php
 /**
- * Outputs a read more link for entries
- *
- * @package   Today WordPress Theme
- * @author    Alexander Clarke
- * @copyright Copyright (c) 2019, WPExplorer.com
- * @link      http://www.wpexplorer.com
- * @since     1.0.0
+ * Outputs a read more link for entries.
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 // Define text
 $text = get_theme_mod( 'entry_readmore_text' );
