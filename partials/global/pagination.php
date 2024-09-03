@@ -6,7 +6,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // Get pagination style
-$style = wpex_get_theme_mod( 'pagination_style', 'numbered' );
+$style = get_theme_mod( 'pagination_style', 'numbered' );
 
 // Get global query
 global $wp_query, $wpex_query;
@@ -24,7 +24,7 @@ if ( $total > 1 ) :
 	// Numbered pagination
 	if ( 'numbered' == $style ) : ?>
 
-		<div class="wpex-page-numbers wpex-clr"> 
+		<div class="wpex-page-numbers"> 
 
 			<?php
 			// Get current page
@@ -47,8 +47,8 @@ if ( $total > 1 ) :
 				'total'     => $total,
 				'mid_size'  => 3,
 				'type'      => 'list',
-				'prev_text' => '<span class="fa fa-angle-left" aria-hidden="true"></span>',
-				'next_text' => '<span class="fa fa-angle-right" aria-hidden="true"></span>',
+				'prev_text' => wpex_get_icon( 'angle-left' ),
+				'next_text' => wpex_get_icon( 'angle-right' ),
 			) );
 
 			// Output pagination
@@ -58,15 +58,15 @@ if ( $total > 1 ) :
 
 	<?php else :
 
-		$next = get_previous_posts_link( esc_html__( 'Newer Entries', 'wpex-today' ) .'<span class="fa fa-chevron-right" aria-hidden="true"></span>' );
-		$prev = get_next_posts_link( '<span class="fa fa-chevron-left" aria-hidden="true"></span>'. esc_html__( 'Older Entries', 'wpex-today' ) ); ?>
+		$next = get_previous_posts_link( esc_html__( 'Newer Entries', 'wpex-today' ) . ' &rarr;' );
+		$prev = get_next_posts_link( '&larr; ' . esc_html__( 'Older Entries', 'wpex-today' ) ); ?>
 
 		<div class="wpex-next-prev-nav wpex-heading-font-family wpex-clr">
 			<?php if ( $prev ) : ?>
-				<div class="nav-next"><?php echo wpex_sanitize( $prev, 'html' ); ?></div>
+				<div class="nav-next"><?php echo $prev; // we are trusting wp functions. ?></div>
 			<?php endif; ?>
 			<?php if ( $next ) : ?>
-				<div class="nav-previous"><?php echo wpex_sanitize( $next, 'html' ); ?></div>
+				<div class="nav-previous"><?php echo $prev; // we are trusting wp functions. ?></div>
 			<?php endif; ?>
 		</div>
 

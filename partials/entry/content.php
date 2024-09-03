@@ -7,9 +7,9 @@ defined( 'ABSPATH' ) || exit;
 
 // Get display
 if ( is_front_page() ) {
-	$display = wpex_get_theme_mod( 'home_entry_content_display', 'excerpt' );
+	$display = get_theme_mod( 'home_entry_content_display', 'excerpt' );
 } else {
-	$display = wpex_get_theme_mod( 'entry_content_excerpt', 'excerpt' );
+	$display = get_theme_mod( 'entry_content_excerpt', 'excerpt' );
 } ?>
 
 <div class="wpex-loop-entry-excerpt entry wpex-clr">

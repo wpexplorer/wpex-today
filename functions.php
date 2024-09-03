@@ -18,15 +18,6 @@
 
 defined( 'ABSPATH' ) || exit;
 
-function wpex_theme_info() {
-	return array(
-		'name'    => 'WPEX Today',
-		'slug'    => 'wpex-today',
-		'url'     => 'https://www.wpexplorer.com/today-free-wordpress/',
-		'support' => 'https://github.com/wpexplorer/wpex-today/issues',
-	);
-}
-
 final class WPEX_Today_Theme_Setup {
 
 	/**
@@ -40,17 +31,11 @@ final class WPEX_Today_Theme_Setup {
 		// Tweak excerpt more text.
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
 
-		// Add responsive class to embeds.
-		add_filter( 'embed_oembed_html', array( $this, 'embed_oembed_html' ), 99, 4 );
-
 		// Add user contact fields.
 		add_filter( 'user_contactmethods', array( $this, 'user_fields' ) );
 
 		// Add custom body classes.
 		add_filter( 'body_class', array( $this, 'body_classes' ) );
-
-		// Add theme meta generator.
-		add_action( 'wp_head', array( $this, 'theme_meta_generator' ), 9999 );
 
 		// Load theme files.
 		add_action( 'after_setup_theme', array( $this, 'load_files' ) );
@@ -61,20 +46,11 @@ final class WPEX_Today_Theme_Setup {
 		// Load theme CSS.
 		add_action( 'wp_enqueue_scripts', array( $this, 'theme_css' ) );
 
-		// Load responsive CSS.
-		add_action( 'wp_enqueue_scripts', array( $this, 'responsive_css' ), 999 );
-
 		// Load theme js scripts.
 		add_action( 'wp_enqueue_scripts', array( $this, 'theme_js' ) );
 
 		// Register sidebars.
 		add_action( 'widgets_init', array( $this, 'register_sidebars' ) );
-
-		// Output JS for retina logo.
-		add_action( 'wp_head', array( $this, 'retina_logo' ) );
-
-		// Add new post formats.
-		add_filter( 'tiny_mce_before_init', array( $this, 'formats' ) );
 
 		// Move Comment textarea form field back to bottom.
 		if ( apply_filters( 'wpex_move_comment_form_fields', true ) ) {
@@ -102,17 +78,6 @@ final class WPEX_Today_Theme_Setup {
 		require_once get_parent_theme_file_path( '/inc/conditionals.php' );
 		require_once get_parent_theme_file_path( '/inc/customizer-config.php' );
 		require_once get_parent_theme_file_path( '/inc/accent-config.php' );
-		require_once get_parent_theme_file_path( '/inc/meta-pages.php' );
-		require_once get_parent_theme_file_path( '/inc/meta-posts.php' );
-
-		if ( is_admin() ) {
-			if ( ! defined( 'WPEX_DISABLE_THEME_DASHBOARD_FEEDS' ) ) {
-				require_once get_parent_theme_file_path( '/admin/dashboard-feed.php' );
-			}
-			if ( ! defined( 'WPEX_DISABLE_THEME_ABOUT_PAGE' ) ) {
-				require_once get_parent_theme_file_path( '/admin/about.php' );
-			}
-		}
 
 		// Include Classes.
 		require_once get_parent_theme_file_path( '/inc/classes/customizer/customizer.php' );
@@ -144,7 +109,7 @@ final class WPEX_Today_Theme_Setup {
 		) );
 
 		// Add editor styles.
-		add_editor_style( 'css/editor-style.css' );
+		add_editor_style( 'assets/css/editor-style.css' );
 
 		// Localization support.
 		load_theme_textdomain( 'wpex-today', get_template_directory() . '/languages' );
@@ -193,34 +158,10 @@ final class WPEX_Today_Theme_Setup {
      * @link   https://codex.wordpress.org/Function_Reference/wp_enqueue_style
 	 */
 	public function theme_css() {
-
-		// Font Awesome.
-		wp_enqueue_style( 'font-awesome', get_parent_theme_file_uri( '/css/font-awesome.min.css' ) );
-
-		// Montserrat font.
-		wp_enqueue_style( 'google-font-raleway', 'https://fonts.googleapis.com/css?family=Raleway:400,400italic,500,500italic,600,600italic,700,700italic&subset=latin,latin-ext' );
-
-		// Main CSS.
 		wp_enqueue_style( 'style', get_stylesheet_uri() );
 
-		// Remove Contact Form 7 Styles.
-		if ( function_exists( 'wpcf7_enqueue_styles') ) {
-			wp_dequeue_style( 'contact-form-7' );
-		}
-
-	}
-
-	/**
-	 * Load responsive css.
-	 *
-     * @since  1.0.0
-     * @access public
-     *
-     * @link   https://codex.wordpress.org/Function_Reference/wp_enqueue_style
-	 */
-	public function responsive_css() {
 		if ( get_theme_mod( 'responsive', true ) ) {
-			wp_enqueue_style( 'wpex-responsive', get_parent_theme_file_uri( '/css/responsive.css' ) );
+			wp_enqueue_style( 'wpex-responsive', get_parent_theme_file_uri( 'assets/css/responsive.css' ) );
 		}
 	}
 
@@ -242,16 +183,13 @@ final class WPEX_Today_Theme_Setup {
 		// Localize scripts.
 		$localize  = apply_filters( 'wpex_localize', array(
 			'isRTL'           => is_rtl(),
-			'mobileMenuOpen'  => get_theme_mod( 'mobile_menu_open_text', esc_html__( 'Menu', 'wpex-today' ) ),
-			'mobileMenuClose' => get_theme_mod( 'mobile_menu_close_text', esc_html__( 'Menu', 'wpex-today' ) ),
+			'mobileMenuOpen'  => get_theme_mod( 'mobile_menu_open_text' ) ?: esc_html__( 'Menu', 'wpex-today' ),
+			'mobileMenuClose' => get_theme_mod( 'mobile_menu_close_text' ) ?: esc_html__( 'Menu', 'wpex-today' ),
 		) );
 
-		wp_enqueue_script( 'fitvids', get_parent_theme_file_uri( '/js/plugins/jquery.fitvids.js' ), array( 'jquery' ), '1.1', true );
-
 		// Theme functions.
-		wp_enqueue_script( 'wpex-functions', get_parent_theme_file_uri( '/js/functions.js' ), array( 'jquery' ), false, true );
+		wp_enqueue_script( 'wpex-functions', get_parent_theme_file_uri( 'assets/js/functions.js' ), array( 'jquery' ), false, true );
 		wp_localize_script( 'wpex-functions', 'wpexLocalize', $localize );
-
 	}
 
 	/**
@@ -270,8 +208,8 @@ final class WPEX_Today_Theme_Setup {
 			'id'            => 'sidebar',
 			'before_widget' => '<div class="wpex-sidebar-widget %2$s wpex-clr">',
 			'after_widget'  => '</div>',
-			'before_title'  => '<h4 class="widget-title">',
-			'after_title'   => '</h4>',
+			'before_title'  => '<div class="widget-title">',
+			'after_title'   => '</div>',
 		) );
 
 		// Sidebar.
@@ -280,8 +218,8 @@ final class WPEX_Today_Theme_Setup {
 			'id'            => 'sidebar_pages',
 			'before_widget' => '<div class="wpex-sidebar-widget %2$s wpex-clr">',
 			'after_widget'  => '</div>',
-			'before_title'  => '<h4 class="widget-title">',
-			'after_title'   => '</h4>',
+			'before_title'  => '<div class="widget-title">',
+			'after_title'   => '</div>',
 		) );
 
 		// Get footer columns.
@@ -295,8 +233,8 @@ final class WPEX_Today_Theme_Setup {
 				'id'            => 'footer-one',
 				'before_widget' => '<div class="footer-widget %2$s wpex-clr">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<h6 class="widget-title">',
-				'after_title'   => '</h6>',
+				'before_title'  => '<div class="widget-title">',
+				'after_title'   => '</div>',
 			) );
 
 		}
@@ -309,8 +247,8 @@ final class WPEX_Today_Theme_Setup {
 				'id'            => 'footer-two',
 				'before_widget' => '<div class="footer-widget %2$s wpex-clr">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<h6 class="widget-title">',
-				'after_title'   => '</h6>',
+				'before_title'  => '<div class="widget-title">',
+				'after_title'   => '</div>',
 			) );
 
 		}
@@ -323,8 +261,8 @@ final class WPEX_Today_Theme_Setup {
 				'id'            => 'footer-three',
 				'before_widget' => '<div class="footer-widget %2$s wpex-clr">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<h6 class="widget-title">',
-				'after_title'   => '</h6>',
+				'before_title'  => '<div class="widget-title">',
+				'after_title'   => '</div>',
 			) );
 
 		}
@@ -337,8 +275,8 @@ final class WPEX_Today_Theme_Setup {
 				'id'            => 'footer-four',
 				'before_widget' => '<div class="footer-widget %2$s wpex-clr">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<h6 class="widget-title">',
-				'after_title'   => '</h6>',
+				'before_title'  => '<div class="widget-title">',
+				'after_title'   => '</div>',
 			) );
 
 		}
@@ -371,31 +309,6 @@ final class WPEX_Today_Theme_Setup {
 	}
 
 	/**
-	 * Alters the default oembed output.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 *
-	 * @link https://developer.wordpress.org/reference/hooks/embed_oembed_html/
-	 */
-	public function embed_oembed_html( $html, $url, $attr, $post_id ) {
-		return '<div class="wpex-responsive-embed">' . $html . '</div>';
-	}
-
-	/**
-	 * Adds js for the retina logo.
-	 *
-	 * @since 1.0.0
-	 */
-	public function retina_logo() {
-		$logo_url = get_theme_mod( 'logo_retina' );
-		$logo_height = intval( get_theme_mod( 'logo_height' ) );
-		if ( $logo_url && $logo_height ) {
-			echo '<!-- Retina Logo --><script type="text/javascript">jQuery(function($){if (window.devicePixelRatio >= 2) {$("#wpex-site-logo img").attr("src", "' . esc_url( $logo_url ) . '");$("#wpex-site-logo img").css("height", "' . intval( $logo_height ) . '");}});</script>';
-		}
-	}
-
-	/**
 	 * Add new user fields.
 	 *
 	 * @since  1.0.0
@@ -407,7 +320,7 @@ final class WPEX_Today_Theme_Setup {
 
 		// Add Twitter.
 		if ( ! isset( $contactmethods['wpex_twitter'] ) ) {
-			$contactmethods['wpex_twitter'] = 'Today - Twitter';
+			$contactmethods['wpex_twitter'] = 'Today - X';
 		}
 
 		// Add Facebook.
@@ -425,7 +338,7 @@ final class WPEX_Today_Theme_Setup {
 			$contactmethods['wpex_pinterest'] = 'Today - Pinterest';
 		}
 
-		// Add Pinterest.
+		// Add Instagram.
 		if ( ! isset( $contactmethods['wpex_instagram'] ) ) {
 			$contactmethods['wpex_instagram'] = 'Today - Instagram';
 		}
@@ -435,107 +348,6 @@ final class WPEX_Today_Theme_Setup {
 
 	}
 
-	/**
-	 * Adds theme meta generator.
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 */
-	public function theme_meta_generator() {
-		$theme = wp_get_theme();
-		echo '<meta name="generator" content="Built With The Today WordPress Theme ' . $theme->get( 'Version' ) . ' by WPExplorer.com" />';
-		echo "\r\n";
-	}
-
-	/**
-	 * Add new formats.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 *
-	 * @link http://codex.wordpress.org/TinyMCE_Custom_Styles
-	 */
-	public function formats( $settings ) {
-		$new_formats = array(
-			array(
-				'title'     => esc_html__( 'Highlight', 'wpex-today' ),
-				'inline'    => 'span',
-				'classes'   => 'wpex-text-highlight'
-			),
-			array(
-				'title' => esc_html__( 'Buttons', 'wpex-today' ),
-				'items' => array(
-					array(
-						'title'     => esc_html__( 'Default', 'wpex-today' ),
-						'selector'  => 'a',
-						'classes'   => 'wpex-theme-button'
-					),
-					array(
-						'title'     => esc_html__( 'Red', 'wpex-today' ),
-						'selector'  => 'a',
-						'classes'   => 'wpex-theme-button red'
-					),
-					array(
-						'title'     => esc_html__( 'Green', 'wpex-today' ),
-						'selector'  => 'a',
-						'classes'   => 'wpex-theme-button green'
-					),
-					array(
-						'title'     => esc_html__( 'Blue', 'wpex-today' ),
-						'selector'  => 'a',
-						'classes'   => 'wpex-theme-button blue'
-					),
-					array(
-						'title'     => esc_html__( 'Orange', 'wpex-today' ),
-						'selector'  => 'a',
-						'classes'   => 'wpex-theme-button orange'
-					),
-					array(
-						'title'     => esc_html__( 'Black', 'wpex-today' ),
-						'selector'  => 'a',
-						'classes'   => 'wpex-theme-button black'
-					),
-					array(
-						'title'     => esc_html__( 'White', 'wpex-today' ),
-						'selector'  => 'a',
-						'classes'   => 'wpex-theme-button white'
-					),
-					array(
-						'title'     => esc_html__( 'Clean', 'wpex-today' ),
-						'selector'  => 'a',
-						'classes'   => 'wpex-theme-button clean'
-					),
-				),
-			),
-			array(
-				'title' => esc_html__( 'Notices', 'wpex-today' ),
-				'items' => array(
-					array(
-						'title'     => esc_html__( 'Default', 'wpex-today' ),
-						'block'     => 'div',
-						'classes'   => 'wpex-notice'
-					),
-					array(
-						'title'     => esc_html__( 'Info', 'wpex-today' ),
-						'block'     => 'div',
-						'classes'   => 'wpex-notice wpex-info'
-					),
-					array(
-						'title'     => esc_html__( 'Warning', 'wpex-today' ),
-						'block'     => 'div',
-						'classes'   => 'wpex-notice wpex-warning'
-					),
-					array(
-						'title'     => esc_html__( 'Success', 'wpex-today' ),
-						'block'     => 'div',
-						'classes'   => 'wpex-notice wpex-success'
-					),
-				),
-			),
-		);
-		$settings['style_formats'] = json_encode( $new_formats );
-		return $settings;
-	}
 
 	/**
 	 * Move Comment form field back to bottom which was altered in WP 4.4.
@@ -563,4 +375,5 @@ final class WPEX_Today_Theme_Setup {
 	}
 
 }
+
 $wpex_today_theme_setup = new WPEX_Today_Theme_Setup;

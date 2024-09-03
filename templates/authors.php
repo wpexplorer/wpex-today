@@ -7,11 +7,13 @@ defined( 'ABSPATH' ) || exit;
 
 get_header(); ?>
 
-	<?php get_template_part( 'partials/page/thumbnail' ); ?>
+	<div class="wpex-content-area">
 
-	<div class="wpex-content-area wpex-clr">
+		<header class="wpex-archive-header">
+			<h1 class="wpex-archive-title"><?php the_title(); ?></h1>
+		</header>
 
-		<main class="wpex-site-main wpex-clr">
+		<main class="wpex-site-main">
 
 			<?php
 			// Get a list of users.
@@ -33,7 +35,7 @@ get_header(); ?>
 			$users = array_merge( $administrators, $authors );
 			$users = array_merge( $users, $contributors ); ?>
 
-			<div class="wpex-authors-listing wpex-clr">
+			<div class="wpex-authors-listing">
 
 				<?php foreach( $users as $wpex_author ) : ?>
 

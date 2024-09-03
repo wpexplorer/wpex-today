@@ -9,6 +9,26 @@ if ( ! class_exists( 'WPEX_Customizer' ) ) {
 	class WPEX_Customizer {
 
 		/**
+		 * Class path.
+		 */
+		private $class_path = '';
+
+		/**
+		 * Class path directory.
+		 */
+		private $customizer_dir = '';
+
+		/**
+		 * Class directory uri.
+		 */
+		private $customizer_dir_uri = '';
+
+		/**
+		 * Customizer panels.
+		 */
+		private $panels = [];
+
+		/**
 		 * Start things up
 		 *
 		 * @version 1.0.0
@@ -21,9 +41,8 @@ if ( ! class_exists( 'WPEX_Customizer' ) ) {
 			// Register and unregister Customizer settings
 			add_action( 'customize_register', array( $this, 'customize_register' ) );
 
-			// Customizer directory paths
-			$this->class_path         = '/inc/classes/customizer/';
-			$this->class_path         = apply_filters( 'wpex_customizer_class_path',  $this->class_path );
+			// Set vars.
+			$this->class_path         = apply_filters( 'wpex_customizer_class_path', '/inc/classes/customizer/');
 			$this->customizer_dir     = get_template_directory() . $this->class_path;
 			$this->customizer_dir_uri = get_template_directory_uri() . $this->class_path;
 
@@ -122,10 +141,12 @@ if ( ! class_exists( 'WPEX_Customizer' ) ) {
 						// Control object
 						if ( isset( $setting['control']['object'] ) ) {
 							$control_object = $setting['control']['object'];
-						} elseif ( 'color' == $type ) {
+						} elseif ( 'color' === $type ) {
 							$control_object = 'WP_Customize_Color_Control';
-						} elseif ( 'upload' == $type ) {
+						} elseif ( 'upload' === $type ) {
 							$control_object = 'WP_Customize_Image_Control';
+						} elseif( 'media' === $type ) {
+							$control_object = 'WP_Customize_Media_Control';
 						} else {
 							$control_object = false;
 						}

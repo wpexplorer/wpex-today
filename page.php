@@ -11,11 +11,9 @@ defined( 'ABSPATH' ) || exit;
 
 get_header(); ?>
 
-	<?php get_template_part( 'partials/page/thumbnail' ); ?>
+	<div class="wpex-content-area">
 
-	<div class="wpex-content-area wpex-clr">
-
-		<main class="wpex-site-main wpex-clr">
+		<main class="wpex-site-main">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 

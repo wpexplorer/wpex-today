@@ -7,8 +7,8 @@ defined( 'ABSPATH' ) || exit;
 
 get_header(); ?>
 
-	<div class="wpex-content-area wpex-clr">
-		<main class="wpex-site-main wpex-clr">
+	<div class="wpex-content-area">
+		<main class="wpex-site-main">
 			<?php get_template_part( 'partials/entry/none' ); ?>
 		</main><!-- .wpex-site-main -->
 	</div><!-- .wpex-content-area -->

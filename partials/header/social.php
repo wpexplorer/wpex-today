@@ -1,20 +1,21 @@
 <?php
 /**
- * Socialbar.
+ * Social bar.
  */
 
 defined( 'ABSPATH' ) || exit;
 
-// Display topbar social
-if ( wpex_get_theme_mod( 'topbar_social_enable', true )
-		&& $social_options = wpex_header_social_options_array()
-) : ?>
+if ( get_theme_mod( 'header_social', true )
+	&& $social_options = wpex_header_social_options_array()
+) :
 
-	<div class="wpex-socialbar wpex-clr">
+$target_blank = wp_validate_boolean( get_theme_mod( 'socialbar_target_blank' ) );
+?>
+
+	<div class="wpex-socialbar">
 		<?php foreach ( $social_options as $key => $val ) :
-			if ( $url = esc_url( wpex_get_theme_mod( 'socialbar_'. $key ) ) ) :
-			$target_blank = wpex_get_theme_mod( 'socialbar_target_blank' ) ? true : false; ?>
-				<a href="<?php echo esc_url( $url ); ?>" title="<?php echo esc_attr( $val['label'] ); ?>"<?php wpex_target_blank( $target_blank ); ?>><span class="<?php echo esc_attr( $val['icon_class'] ); ?>"></span></a>
+			if ( $url = get_theme_mod( 'socialbar_' . $key ) ) : ?>
+				<a href="<?php echo esc_url( $url ); ?>" title="<?php echo esc_attr( $val['label'] ); ?>"<?php echo $target_blank ? ' target="_blank"' : ''; ?>><?php echo wpex_get_icon( $key ); ?></a>
 			<?php endif; ?>
 		<?php endforeach; ?>
 	</div><!-- .wpex-socialbar -->

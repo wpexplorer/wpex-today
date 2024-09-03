@@ -18,14 +18,14 @@ get_header();
 $have_posts = have_posts() ? true : false;
 
 // Check if featured post is enabled.
-$featured_post_enabled = wpex_get_theme_mod( 'archive_featured_post', true );
+$featured_post_enabled = get_theme_mod( 'archive_featured_post', true );
 $featured_post_enabled = apply_filters( 'wpex_archive_featured_post', $featured_post_enabled );
 
 if ( is_search() ) {
 	$featured_post_enabled = false;
 } ?>
 
-<div class="wpex-content-area wpex-clr">
+<div class="wpex-content-area">
 
 	<?php
 	// Display page header.
@@ -39,18 +39,15 @@ if ( is_search() ) {
 
 	<?php endif; ?>
 
-	<main class="wpex-site-main wpex-clr">
+	<main class="wpex-site-main">
 
 		<?php
 		// Check if posts exist.
 		if ( $have_posts ) : ?>
 
-			<div class="wpex-entries wpex-row wpex-clr">   
+			<div class="wpex-entries wpex-row wpex-cols-<?php echo sanitize_html_class( wpex_get_loop_columns() ); ?>">   
 
 				<?php
-				// Set counter.
-				$wpex_count = 0;
-
 				// Get query.
 				global $wp_query;
 
@@ -64,9 +61,6 @@ if ( is_search() ) {
 					if ( $featured_post == get_the_ID() && $featured_post_enabled ) {
 						continue;
 					}
-
-					// Add to counter.
-					$wpex_count++;
 
 					// Display post entry.
 					get_template_part( 'partials/layout-entry' );

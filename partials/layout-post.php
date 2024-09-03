@@ -6,40 +6,23 @@
 defined( 'ABSPATH' ) || exit;
 
 // Check password protection
-$pass_protected = post_password_required(); ?>
+$pass_protected = post_password_required();
+
+?>
 
 <article class="wpex-post-article wpex-clr">
 
 	<?php
 	// Entry media should display only if not protected
 	if ( ! $pass_protected ) : ?>
-
-
-		<?php
-		// Display post video
-		if ( wpex_has_post_video() ) : ?>
-
-			<?php get_template_part( 'partials/post/video' ); ?>
-
-		<?php
-		// Display post audio
-		elseif ( wpex_has_post_audio() ) : ?>
-
-			<?php get_template_part( 'partials/post/audio' ); ?>
-
-		<?php
-		// Display post thumbnail
-		elseif ( has_post_thumbnail() && wpex_get_theme_mod( 'post_thumbnail', true ) ) : ?>
-
+		<?php if ( has_post_thumbnail() && get_theme_mod( 'post_thumbnail', true ) ) : ?>
 			<?php get_template_part( 'partials/post/thumbnail' ); ?>
-
 		<?php endif ?>
-
 	<?php endif ?>
 
 	<?php
 	// Display category tag
-	if ( wpex_get_theme_mod( 'post_category', true ) ) : ?>
+	if ( get_theme_mod( 'post_category', true ) ) : ?>
 
 		<?php get_template_part( 'partials/post/category' ); ?>
 		
@@ -51,7 +34,7 @@ $pass_protected = post_password_required(); ?>
 
 	<?php
 	// Display meta
-	if ( wpex_get_theme_mod( 'post_meta', true ) ) : ?>
+	if ( get_theme_mod( 'post_meta', true ) ) : ?>
 		<?php get_template_part( 'partials/post/meta' ); ?>
 	<?php endif; ?>
 
@@ -75,7 +58,7 @@ $pass_protected = post_password_required(); ?>
 
 	<?php
 	// Display post tags
-	if ( ! $pass_protected && wpex_get_theme_mod( 'post_tags', true ) ) : ?>
+	if ( ! $pass_protected && get_theme_mod( 'post_tags', true ) ) : ?>
 
 		<?php get_template_part( 'partials/post/tags' ); ?>
 
@@ -91,7 +74,7 @@ $pass_protected = post_password_required(); ?>
 
 	<?php
 	// Display related posts
-	if ( ! $pass_protected && wpex_get_theme_mod( 'post_related', true ) ) : ?>
+	if ( ! $pass_protected && get_theme_mod( 'post_related', true ) ) : ?>
 
 		<?php get_template_part( 'partials/post/related' ); ?>
 
@@ -103,13 +86,13 @@ $pass_protected = post_password_required(); ?>
 
 	<?php
 	// Display comments
-	if ( wpex_get_theme_mod( 'comments_on_posts', true ) ) : ?>
+	if ( get_theme_mod( 'comments_on_posts', true ) ) : ?>
 		<?php comments_template(); ?>
 	<?php endif; ?>
 
 	<?php
 	// Display post nav (next/prev)
-	if ( wpex_get_theme_mod ( 'post_next_prev', true ) ) {
+	if ( get_theme_mod ( 'post_next_prev', true ) ) {
 		get_template_part( 'partials/post/navigation' );
 	} ?>
 

@@ -6,21 +6,21 @@
 defined( 'ABSPATH' ) || exit;
 
 // Get items to display
-$meta_items = array( 'date', 'author', 'comments' );
+$meta_items = array( 'date' );
 $meta_items	= array_combine( $meta_items, $meta_items );
 
 // Remove date
-if ( ! wpex_get_theme_mod( 'entry_meta_date', true ) ) {
+if ( ! get_theme_mod( 'entry_meta_date', true ) ) {
 	unset( $meta_items['date'] );
 }
 
 // Remove author
-if ( ! wpex_get_theme_mod( 'entry_meta_author', true ) ) {
+if ( ! get_theme_mod( 'entry_meta_author', true ) ) {
 	unset( $meta_items['author'] );
 }
 
 // Remove comments
-if ( ! wpex_get_theme_mod( 'entry_meta_comments', true ) ) {
+if ( ! get_theme_mod( 'entry_meta_comments', true ) ) {
 	unset( $meta_items['comments'] );
 }
 
@@ -39,21 +39,30 @@ if ( $taxonomy ) {
 	$terms = wpex_get_post_terms( $taxonomy, true );
 } else {
 	$terms = NULL;
-} ?>
+}
 
-<div class="wpex-loop-entry-meta wpex-clr">
+?>
 
-	<ul class="wpex-clr">
+<div class="wpex-loop-entry-meta">
+
+	<ul>
 
 		<?php
 		// Loop through meta options
-		foreach ( $meta_items as $meta_item ) : ?>
+		$first = true;
+		foreach ( $meta_items as $meta_item ) :
+			if ( $first ) {
+				$first = false;
+			} else {
+				echo '<li class="wpex-meta-spacer"><span>&middot;</span></li>';
+			}
+		?>
 
 			<?php
 			// Display date
 			if ( 'date' == $meta_item ) : ?>
 
-				<li class="wpex-date"><span class="wpex-spacer">&middot;</span><?php echo get_the_date(); ?></li>
+				<li class="wpex-date"><?php echo get_the_date(); ?></li>
 
 			<?php endif; ?>
 
@@ -61,7 +70,7 @@ if ( $taxonomy ) {
 			// Display author
 			if ( 'author' == $meta_item ) : ?>
 
-				<li class="wpex-author"><span class="wpex-spacer">&middot;</span><?php the_author_posts_link(); ?></li>
+				<li class="wpex-author"><?php the_author_posts_link(); ?></li>
 
 			<?php endif; ?>
 
@@ -69,7 +78,9 @@ if ( $taxonomy ) {
 			// Display category
 			if ( 'category' == $meta_item && isset( $terms ) ) : ?>
 
-				<li class="wpex-categories"><span class="wpex-spacer">&middot;</span><?php echo wpex_sanitize( $terms, 'html' ); ?></li>
+				<li class="wpex-categories"><?php
+					echo wp_kses_post( $terms );
+				?></li>
 
 			<?php endif; ?>
 

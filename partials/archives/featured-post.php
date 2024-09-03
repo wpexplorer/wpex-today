@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) || exit;
 
 global $wp_query;
 $featured_post = wpex_get_featured_post( $wp_query );
-$allow_embeds  = wpex_get_theme_mod( 'entry_embeds', false );
+$allow_embeds  = get_theme_mod( 'entry_embeds', false );
 
 if ( $featured_post ) :
 

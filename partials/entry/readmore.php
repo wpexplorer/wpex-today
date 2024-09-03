@@ -5,15 +5,15 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// Define text
-$text = get_theme_mod( 'entry_readmore_text' );
-$text = $text ? $text : esc_html__( 'read more', 'wpex-today' );
-$text = apply_filters( 'wpex_entry_readmore_text', $text ); ?>
+$text = get_theme_mod( 'entry_readmore_text' ) ?: esc_html__( 'read more', 'wpex-today' );
+$text = apply_filters( 'wpex_entry_readmore_text', $text );
+
+?>
 
 <?php if ( $text ) : ?>
 
-	<div class="wpex-loop-entry-readmore wpex-clr">
-		<a href="<?php the_permalink(); ?>" class="wpex-readmore"><?php echo wpex_sanitize( $text, 'html' ); ?></a>
+	<div class="wpex-loop-entry-readmore">
+		<a aria-hidden="true" href="<?php the_permalink(); ?>" class="wpex-readmore"><?php echo esc_html( $text ); ?></a>
 	</div><!-- .wpex-loop-entry-readmore -->
 
 <?php endif; ?>
