@@ -6,9 +6,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // Make sure we should display related items
-if ( 'post' != get_post_type()
-	|| 'on' == get_post_meta( get_the_ID(), 'wpex_disable_related', true )
-) {
+if ( 'post' != get_post_type() ) {
 	return;
 }
 
@@ -58,66 +56,37 @@ $wpex_query = new wp_query( $args );
 if ( $wpex_query->have_posts() ) {
 
 	// Get columns
-	$columns = wpex_get_theme_mod( 'post_related_columns', '3' ); ?>
+	$columns = get_theme_mod( 'post_related_columns', '3' ); ?>
 
-	<section class="wpex-related-posts-wrap wpex-clr">
+	<section class="wpex-related-posts-wrap">
 
 		<?php
 		// Display heading
-		$heading = wpex_get_theme_mod( 'post_related_heading' );
-		$heading = $heading ? $heading : esc_html__( 'You May Also Like', 'wpex-today' );
+		$heading = get_theme_mod( 'post_related_heading' ) ?: esc_html__( 'You May Also Like', 'wpex-today' );
 		if ( $heading ) : ?>
-			<h4 class="wpex-heading"><?php echo wpex_sanitize( $heading, 'html' ); ?></h4>
+			<h4 class="wpex-heading"><?php echo esc_html( $heading ); ?></h4>
 		<?php endif; ?>
 
-		<div class="wpex-related-posts wpex-row wpex-clr">
+		<div class="wpex-related-posts wpex-row wpex-cols-3">
 			<?php
 			// Loop through related posts
-			$count = 0;
-			foreach( $wpex_query->posts as $post ) : setup_postdata( $post );
-				$count ++; ?>
+			foreach( $wpex_query->posts as $post ) : setup_postdata( $post ); ?>
 
-				<div class="wpex-related-post wpex-clr wpex-col wpex-col-<?php echo absint( $columns ); ?> wpex-count-<?php echo absint( $count ); ?>">
+				<div class="wpex-related-post wpex-col wpex-col-<?php echo sanitize_html_class( $columns ); ?>">
 
 					<?php if ( has_post_thumbnail() ) : ?>
-
-						<div class="wpex-related-post-thumbnail wpex-clr">
+						<div class="wpex-related-post-thumbnail">
 							<a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>"><?php the_post_thumbnail( 'wpex_related_entry' ); ?></a>
-							<?php
-							// Display category tag only for random posts
-							if ( 'random' == $display ) :
-								// Show category tag
-								if ( $category = wpex_get_post_terms( 'category', true, 'wpex-accent-bg' ) ) : ?>
-									<div class="wpex-entry-cat wpex-clr wpex-button-typo">
-										<?php echo wpex_sanitize( $category, 'html' ); ?>
-									</div><!-- .wpex-entry-cat -->
-								<?php endif; ?>
-							<?php endif; ?>
 						</div><!-- .related-wpex-post-thumbnail -->
-
 					<?php endif; ?>
 
-					<div class="wpex-related-post-content wpex-clr">
+					<div class="wpex-related-post-content">
 						<h3 class="wpex-related-post-title">
-							<a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>">
-								<?php
-								// Show play icon
-								if ( wpex_has_post_video() ) {
-									echo '<span class="fa fa-play-circle wpex-video-icon" aria-hidden="true"></span>';
-								}
-								// Show music icon
-								if ( wpex_has_post_audio() ) {
-									echo '<span class="fa fa-music wpex-music-icon" aria-hidden="true"></span>';
-								}
-								// Show title
-								the_title(); ?>
-							</a>
+							<a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>"><?php the_title(); ?></a>
 						</h3>
 						<div class="wpex-related-post-meta"><?php echo get_the_date(); ?></div>
 						</div><!-- .related-post-content -->
 				</div><!-- .related-post -->
-
-				<?php if ( $count == $columns ) $count = 0; ?>
 
 			<?php endforeach; ?>
 

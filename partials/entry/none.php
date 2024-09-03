@@ -6,11 +6,11 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<div class="wpex-entry-none wpex-clr">
+<div class="wpex-entry-none">
 
-	<?php if ( is_home() && current_user_can( 'publish_posts' ) ) { ?>
+	<?php if ( is_home() ) { ?>
 
-		<p><?php printf( esc_html__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'wpex-today' ), admin_url( 'post-new.php' ) ); ?></p>
+		<p><?php esc_html_e( 'There aren\'t any posts currently published on this site.', 'wpex-today' ); ?></p>
 
 	<?php } elseif ( is_search() ) { ?>
 

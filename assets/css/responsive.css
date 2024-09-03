@@ -1,0 +1,31 @@
+/*------------------------------------------------------------------
+[# Anything under 959px]
+-------------------------------------------------------------------*/
+@media only screen and (max-width: 959px) {
+	.wpex-site-header { align-items: flex-start; flex-direction: column; }
+	.wpex-site-branding, .wpex-header-ad { max-width: none; margin-left: 0; }
+	.wpex-content-area,
+	.wpex-sidebar { width: 100%; float: none !important; max-width: none; }
+	.wpex-sidebar { clear: both; padding: 3rem 0 0; margin: 0 auto; }
+	.wpex-cols-3,.wpex-cols-4 { grid-template-columns: repeat(2, 1fr); }
+	.wpex-site-nav .wpex-dropdown-menu { display: none }
+	.wpex-site-nav .wpex-mobile-nav-toggle { display: inline-flex; align-items: center; }
+}
+
+/*------------------------------------------------------------------
+[# Anything under 767px]
+-------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) { 
+	.wpex-ad-region.single-top,
+	.wpex-ad-region.archives-top { margin-bottom: 30px }
+}
+
+/*------------------------------------------------------------------
+[# Anything under 640px]
+-------------------------------------------------------------------*/
+@media only screen and (max-width: 640px) { 
+	.wpex-row { grid-template-columns: 1fr; }
+	.wpex-sidebar, .wpex-site-footer .wpex-row .wpex-col { max-width: none }
+	.wpex-author-info-inner { flex-direction: column; }
+	.wpex-page-thumbnail-title h1 { font-size: 21px }
+}

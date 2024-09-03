@@ -14,10 +14,11 @@ if ( ! $columns || '0' == $columns ) {
 }
 
 // Widget classes
-$classes = 'wpex-footer-box wpex-col wpex-clr';
-$classes .= ' wpex-col-' . intval( $columns ); ?>
+$classes = 'wpex-footer-box';
 
-<div class="wpex-footer-widgets wpex-row wpex-clr">
+?>
+
+<div class="wpex-footer-widgets wpex-row wpex-cols-<?php echo sanitize_html_class( $columns ); ?>">
 
 	<?php if ( $columns >= 1 ) : ?>
 

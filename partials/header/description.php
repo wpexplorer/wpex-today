@@ -5,11 +5,10 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// Display description if enabled
-if ( wpex_get_theme_mod( 'site_description', true ) && $description = get_bloginfo( 'description' ) ) : ?>
+if ( get_theme_mod( 'site_description', true ) && $description = get_bloginfo( 'description' ) ) { ?>
 
-	<div class="wpex-site-description wpex-clr">
-		<?php echo wpex_sanitize( $description, 'html' ); ?>
+	<div class="wpex-site-description">
+		<?php echo wp_kses_post( $description ); ?>
 	</div><!-- .wpex-site-description -->
 
-<?php endif; ?>
+<?php } ?>

@@ -9,7 +9,7 @@ $has_footer_widgets = wpex_has_footer_widgets(); ?>
 
 <?php get_template_part( 'partials/footer/ad' ); ?>
 
-<footer class="wpex-site-footer-wrap wpex-clr">
+<footer class="wpex-site-footer-wrap">
 
 	<div class="wpex-site-footer wpex-container wpex-clr">
 
